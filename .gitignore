@@ -32,3 +32,11 @@ php.ini
 # --- Игнорируем пустые файлы тем и плагинов ---
 /wordpress/wp-content/plugins/index.php
 /wordpress/wp-content/themes/index.php
+/.idea/.gitignore
+/.idea/bitrixlangplugin.xml
+/.idea/modules.xml
+/.idea/php.xml
+/.idea/polihim.iml
+/.idea/vcs.xml
+/.idea/watcherTasks.xml
+/wordpress/wp-content/logs/index.html

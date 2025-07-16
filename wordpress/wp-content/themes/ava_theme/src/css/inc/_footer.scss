@@ -1,0 +1,133 @@
+.contact-form{
+  margin: .5rem .5rem 0 .5rem;
+  padding-bottom: 5rem;
+  width: calc(100% - 1rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__icon{
+    position: absolute;
+    width: .7rem;
+    height: .8rem;
+
+    &._lt{
+      top: 2rem;
+      left: 2rem;
+    }
+
+    &._rt{
+      top: 2rem;
+      right: 2rem;
+    }
+
+    &._rb{
+      bottom: 2rem;
+      right: 2rem;
+    }
+
+    &._lb{
+      bottom: 2rem;
+      left: 2rem;
+    }
+  }
+
+  &__inner{
+    max-width: 60rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title{
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  &__description{
+    max-width: 22.5rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .wpcf7{
+    width: 100%;
+
+    .contact-form__line{
+      display: flex;
+      gap: .5rem .5rem;
+    }
+
+    .contact-form__line__inner{
+      display: flex;
+      flex-direction: column;
+      gap: .5rem .5rem;
+      width: 100%;
+    }
+
+    .wpcf7-form-control-wrap{
+      width: 100%;
+    }
+
+    textarea{
+      resize: none;
+      height: 10.5rem;
+    }
+  }
+
+
+
+  &__input{
+    width: 100%;
+    padding: 1.3rem 1.5rem;
+    border-radius: 10px;
+    border: 1px solid #20376D33;
+
+    &.wpcf7-not-valid{
+      border: 1px solid #E91A1A;
+      color: #E91A1A;
+
+      &::placeholder{
+        color: #E91A1A;
+      }
+    }
+  }
+
+  .wpcf7-form{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem 0;
+  }
+
+  .invalid{
+
+    .wpcf7-response-output{
+      color: #E91A1A;
+    }
+  }
+
+  .wpcf7-response-output{
+    position: absolute;
+    left: 0;
+    bottom: 2rem;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    font-family: Inter Tight;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 140%;
+    color: $c-g;
+    letter-spacing: -0.03em;
+
+    @include mobile {
+      font-size: .7rem;
+    }
+  }
+}
+
+.wpcf7-not-valid-tip{
+  display: none !important;
+}
