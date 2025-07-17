@@ -39,7 +39,7 @@
             <a href="#" class="header__navigation__item p2">Производство</a>
             <a href="#" class="header__navigation__item p2">Лаборатория</a>
             <a href="#" class="header__navigation__item p2">О компании</a>
-            <a href="<?= pll_current_language(); ?>/info-center/" class="header__navigation__item p2">Инфоцентр</a>
+            <a href="<?= pll_current_language(); ?>/infocenter/" class="header__navigation__item p2">Инфоцентр</a>
         </nav>
     </div>
     <div class="header__inner">
@@ -69,10 +69,16 @@
                 </button>
             </form>
         </div>
+        <button class="button-long _transparent">
+            <span class="button-long__inner">
+                <span class="button-long__title p2"><?= pll__('Меню'); ?></span>
+                <span class="button-long__title p2"><?= pll__('Меню'); ?></span>
+            </span>
+        </button>
         <a href="#" class="button-long _orange">
             <span class="button-long__inner">
-                <span class="button-long__title p2">Связаться с нами</span>
-                <span class="button-long__title p2">Связаться с нами</span>
+                <span class="button-long__title p2"><?= pll__('Связаться с нами'); ?></span>
+                <span class="button-long__title p2"><?= pll__('Связаться с нами'); ?></span>
             </span>
         </a>
     </div>

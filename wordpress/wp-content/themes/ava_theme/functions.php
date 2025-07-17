@@ -43,6 +43,7 @@ function ava_theme_scripts() {
     wp_enqueue_script( 'lottie-js', get_stylesheet_directory_uri() . '/src/js/vendor/lottie.min.js'  );
 
     wp_enqueue_script( 'index-js', get_stylesheet_directory_uri() . '/src/index.js');
+    wp_enqueue_script( 'ajax-infocenter-js', get_stylesheet_directory_uri() . '/src/js/ajax-infocenter.js');
 
     wp_dequeue_style('wp-block-library');
     wp_dequeue_style('wp-block-library-theme');
@@ -63,5 +64,54 @@ function allow_json_upload($mimes) {
 }
 add_filter('upload_mimes', 'allow_json_upload');
 
-// убирает p и br из contact form 7
+// Убирает p и br из contact form 7
 add_filter('wpcf7_autop_or_not', '__return_false');
+
+// Поля под перевод polylang
+add_action('init', 'ava_polylang_strings' );
+
+function ava_polylang_strings()
+{
+    if (!function_exists('pll_register_string')) {
+        return;
+    }
+
+    pll_register_string(
+        'infocenter-year',
+        'Выберите год публикаций, который вас интересует.',
+        'Инфоцентр',
+        true
+    );
+
+    pll_register_string(
+        'infocenter-all',
+        'Смотреть все',
+        'Инфоцентр',
+    );
+
+    pll_register_string(
+        'infocenter-watch',
+        'Загрузить ещё',
+        'Инфоцентр',
+    );
+
+    pll_register_string(
+        'infocenter-read',
+        'Читать',
+        'Инфоцентр',
+    );
+
+    pll_register_string(
+        'header-menu',
+        'Меню',
+        'Хедер',
+    );
+
+    pll_register_string(
+        'header-tell-us',
+        'Связаться с нами',
+        'Хедер',
+    );
+}
+
+require get_template_directory() . '/ajax-infocenter.php';

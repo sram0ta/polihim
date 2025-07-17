@@ -158,6 +158,10 @@ h5, .h5{
   color: $c-g;
   letter-spacing: -0.03em;
 
+  @include laptop {
+    font-size: .8rem;
+  }
+
   @include mobile {
     font-size: .7rem;
   }
@@ -211,6 +215,19 @@ h5, .h5{
   border-radius: 10px;
   background-color: $c-w;
 
+  @include laptop{
+    padding: 1.5rem 1.5rem 0 1.5rem;
+  }
+
+  @include tablet{
+    padding: 1rem 1rem 0 1rem;
+    border-radius: 5px;
+  }
+
+  @include mobile{
+    padding: .5rem .5rem 0 .5rem;
+  }
+
   &._no-overflow{
     overflow: initial !important;
   }
@@ -238,6 +255,15 @@ h5, .h5{
   box-sizing: border-box;
   border: none;
   transition: .5s;
+
+  @include laptop{
+    min-width: 9rem;
+    padding: .5rem 1rem;
+  }
+
+  @include laptop{
+    min-width: 5.5rem;
+  }
 
   &:hover{
 
@@ -302,12 +328,28 @@ h5, .h5{
       color: $c-w;
     }
   }
+
+  &._transparent{
+    border: 1px solid #20376D33;
+    background-color: transparent;
+    transition: .5s;
+
+    &:hover{
+      border: 1px solid rgba(43, 60, 107, 0.2);
+    }
+
+    .button-long__title{
+      color: #2F2F2F;
+    }
+  }
 }
 
 .button-polygon{
   display: flex;
   align-items: center;
   gap: 0 1rem;
+  border: none;
+  padding: 0;
 
   &:hover{
 

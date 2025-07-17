@@ -574,7 +574,7 @@ get_header();
                 <?php endforeach;
                 wp_reset_postdata(); ?>
             </div>
-            <a href="<?= pll_current_language(); ?>/info-center/" class="button-polygon">
+            <a href="<?= pll_current_language(); ?>/infocenter/" class="button-polygon">
                 <span class="button-polygon__title p1">Смотреть все новости</span>
                 <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                     <span class="button-polygon__icon__inner">
