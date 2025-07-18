@@ -44,6 +44,7 @@ function ava_theme_scripts() {
 
     wp_enqueue_script( 'index-js', get_stylesheet_directory_uri() . '/src/index.js');
     wp_enqueue_script( 'ajax-infocenter-js', get_stylesheet_directory_uri() . '/src/js/ajax-infocenter.js');
+    wp_enqueue_script( 'ajax-tara-js', get_stylesheet_directory_uri() . '/src/js/ajax-tara.js');
 
     wp_dequeue_style('wp-block-library');
     wp_dequeue_style('wp-block-library-theme');
@@ -112,6 +113,25 @@ function ava_polylang_strings()
         'Связаться с нами',
         'Хедер',
     );
+
+    pll_register_string(
+        'tare-filter-name',
+        'Фильтрация тары',
+        'Тара',
+    );
+
+    pll_register_string(
+        'tare-clear-name',
+        'Сбросить всё',
+        'Тара',
+    );
+
+    pll_register_string(
+        'industry-link-name',
+        'Узнать подробнее',
+        'Главная',
+    );
 }
 
 require get_template_directory() . '/ajax-infocenter.php';
+require get_template_directory() . '/ajax-tare.php';
