@@ -50,8 +50,9 @@ pre {
 }
 
 a {
-	display: block;
-	line-height: 0;
+	display: inline-block;
+	line-height: inherit;
+	color: inherit;
 	background-color: transparent;
 	text-decoration: none;
 }
