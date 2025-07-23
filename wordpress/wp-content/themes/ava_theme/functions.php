@@ -43,8 +43,19 @@ function ava_theme_scripts() {
     wp_enqueue_script( 'lottie-js', get_stylesheet_directory_uri() . '/src/js/vendor/lottie.min.js'  );
 
     wp_enqueue_script( 'index-js', get_stylesheet_directory_uri() . '/src/index.js');
-    wp_enqueue_script( 'ajax-infocenter-js', get_stylesheet_directory_uri() . '/src/js/ajax-infocenter.js');
-    wp_enqueue_script( 'ajax-tara-js', get_stylesheet_directory_uri() . '/src/js/ajax-tara.js');
+
+    if (is_page('infocenter')){
+        wp_enqueue_script( 'ajax-infocenter-js', get_stylesheet_directory_uri() . '/src/js/ajax-infocenter.js');
+    }
+
+
+    if (is_page('tare')){
+        wp_enqueue_script( 'ajax-tare-js', get_stylesheet_directory_uri() . '/src/js/ajax-tare.js');
+    }
+
+    if (is_page('lubricants')){
+        wp_enqueue_script( 'ajax-lubricants-js', get_stylesheet_directory_uri() . '/src/js/ajax-lubricants.js');
+    }
 
     wp_dequeue_style('wp-block-library');
     wp_dequeue_style('wp-block-library-theme');
@@ -127,6 +138,54 @@ function ava_polylang_strings()
     );
 
     pll_register_string(
+        'lubricants-filter-name-composition',
+        'Фильтрация по составу',
+        'Смазки',
+    );
+
+    pll_register_string(
+        'lubricants-filter-name-composition-mobile',
+        'По составу',
+        'Смазки',
+    );
+
+    pll_register_string(
+        'lubricants-filter-name-purpose',
+        'Фильтрация по назначению',
+        'Смазки',
+    );
+
+    pll_register_string(
+        'lubricants-filter-name-purpose-mobile',
+        'По назначению',
+        'Смазки',
+    );
+
+    pll_register_string(
+        'lubricants-filter-name-filter',
+        'Фильтрация',
+        'Смазки',
+    );
+
+    pll_register_string(
+        'lubricants-link-more',
+        'Подробнее',
+        'Смазки',
+    );
+
+    pll_register_string(
+        'lubricants-link-pdf',
+        'Скачать PDF',
+        'Смазки',
+    );
+
+    pll_register_string(
+        'lubricants-nothing',
+        'Ничего не найдено.',
+        'Смазки',
+    );
+
+    pll_register_string(
         'industry-link-name',
         'Узнать подробнее',
         'Главная',
@@ -159,3 +218,4 @@ function ava_polylang_strings()
 
 require get_template_directory() . '/ajax-infocenter.php';
 require get_template_directory() . '/ajax-tare.php';
+require get_template_directory() . '/ajax-lubricants.php';

@@ -1,11 +1,11 @@
 <?php
 /*
-Template Name: Тара
+Template Name: Смазки
 */
 
 get_header();
 ?>
-<main class="main page-product page-tara">
+<main class="main page-product page-lubricants">
     <div class="container container-main__inner">
         <div class="upper-information grid-12">
             <?php
@@ -39,24 +39,33 @@ get_header();
             </div>
             <div class="upper-information__title h1"><?php the_field('page-title'); ?></div>
         </div>
-        <div class="tara grid-12">
+        <div class="lubricants grid-12">
             <div class="products-filter">
                 <div class="products-filter__title-filter p2"><?= pll__('Фильтрация') ?></div>
                 <div class="products-filter__list">
-                    <div class="products-filter__title products-filter__title-button p1" data-button="tare">
-                        <div class="products-filter__title-button__mobile"><?= pll__('Фильтрация тары'); ?></div>
+                    <div class="products-filter__title products-filter__title-button p1" data-button="compound">
+                        <div class="products-filter__title-button__tablet"><?= pll__('Фильтрация по составу'); ?></div>
+                        <div class="products-filter__title-button__mobile"><?= pll__('По составу'); ?></div>
+                        <svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" width="1" height="7" fill="#20376D"/>
+                            <rect y="4" width="1" height="7" transform="rotate(-90 0 4)" fill="#20376D"/>
+                        </svg>
+                    </div>
+                    <div class="products-filter__title products-filter__title-button p1" data-button="purpose">
+                        <div class="products-filter__title-button__tablet"><?= pll__('Фильтрация по назначению'); ?></div>
+                        <div class="products-filter__title-button__mobile"><?= pll__('По назначению'); ?></div>
                         <svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="3" width="1" height="7" fill="#20376D"/>
                             <rect y="4" width="1" height="7" transform="rotate(-90 0 4)" fill="#20376D"/>
                         </svg>
                     </div>
                 </div>
-                <div class="products-filter__item" data-block="tare">
-                    <div class="products-filter__title p1"><?= pll__('Фильтрация тары'); ?></div>
+                <div class="products-filter__item" data-block="compound">
+                    <div class="products-filter__title p1"><?= pll__('Фильтрация по составу'); ?></div>
                     <div class="products-filter__inner">
                         <?php
                         $terms = get_terms([
-                            'taxonomy'   => 'type-of-tare',
+                            'taxonomy'   => 'compound',
                             'hide_empty' => true,
                         ]);
 
@@ -70,12 +79,31 @@ get_header();
                         ?>
                     </div>
                 </div>
+                <div class="products-filter__item" data-block="purpose">
+                    <div class="products-filter__title p1"><?= pll__('Фильтрация по назначению'); ?></div>
+                    <div class="products-filter__inner">
+                        <?php
+                        $terms = get_terms([
+                            'taxonomy'   => 'purpose',
+                            'hide_empty' => true,
+                        ]);
+
+                        if (!empty($terms) && !is_wp_error($terms)) {
+                            foreach ($terms as $term) {
+                                ?>
+                                <button class="products-filter__button p2" data-type="<?= esc_attr($term->slug); ?>"><?= esc_html($term->name) ?></button>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
                 <button class="products-filter__clear p2" style="display: none;"><?= pll__('Сбросить всё'); ?></button>
             </div>
-            <div class="tara__content">
+            <div class="lubricants__content">
                 <?php
                 $args = [
-                    'post_type'      => 'tare',
+                    'post_type'      => 'lubricants',
                     'posts_per_page' => -1,
                     'post_status'    => 'publish',
                     'lang'           => function_exists('pll_current_language') ? pll_current_language() : '',
@@ -85,14 +113,37 @@ get_header();
 
                 if ($query->have_posts()) :
                     while ($query->have_posts()) : $query->the_post();
+                        $compound_terms = get_the_terms(get_the_ID(), 'compound');
+                        $purpose_terms  = get_the_terms(get_the_ID(), 'purpose');
                         ?>
-                        <div class="tara__content__item">
-                            <div class="tara__content__item__inner">
-                                <h5 class="tara__content__item__title h5"><?php the_title(); ?></h5>
-                                <p class="tara__content__item__description p1"><?php the_field('description'); ?></p>
+                        <div class="lubricants__content__item">
+                            <div class="lubricants__content__item__inner">
+                                <h5 class="lubricants__content__item__title h5"><?php the_title(); ?></h5>
+                                <p class="lubricants__content__item__description p1"><?php the_field('small_description'); ?></p>
+                                <div class="lubricants__content__item__tag-list">
+                                    <?php
+                                    if ($compound_terms) {
+                                        foreach ($compound_terms as $term) {
+                                            ?>
+                                                <div class="lubricants__content__item__tag p2"><?= esc_html($term->name); ?></div>
+                                            <?php
+                                        }
+                                    }
+                                    if ($purpose_terms) {
+                                        foreach ($purpose_terms as $term) {
+                                            ?>
+                                                <div class="lubricants__content__item__tag p2"><?= esc_html($term->name); ?></div>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
+                                </div>
                             </div>
-                            <div class="tara__content__item__image">
-                                <img src="<?= esc_url(get_field('image')['url']); ?>" alt="<?php the_title(); ?>" loading="lazy">
+                            <div class="lubricants__content__item__link-list">
+                                <a href="<?php the_permalink(); ?>" class="lubricants__content__item__link p1"><?= pll__('Подробнее'); ?></a>
+                                <?php if (get_field('pdf_file')) : ?>
+                                    <a href="<?php the_field('pdf_file'); ?>" class="lubricants__content__item__link p1" download><?= pll__('Скачать PDF'); ?></a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     <?php

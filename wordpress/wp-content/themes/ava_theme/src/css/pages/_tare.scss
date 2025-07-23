@@ -1,0 +1,289 @@
+.page-product{
+
+  .container-main__inner{
+    padding-bottom: 10rem;
+    gap: 0;
+
+    @include laptop{
+      padding-bottom: 7.5rem;
+    }
+
+    @include tablet{
+      padding-bottom: 5rem;
+    }
+
+    @include mobile{
+      padding-bottom: 4rem;
+    }
+  }
+}
+
+.page-tara{
+
+  .tara{
+    margin-top: 2.5rem;
+
+    @include laptop{
+      margin-top: 2rem;
+    }
+
+    @include tablet{
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem 0;
+    }
+
+    @include mobile{
+      gap: 1.5rem 0;
+    }
+
+    &__content{
+      grid-column: 5 / -1;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 0 .5rem;
+
+      &__item{
+        grid-column: span 4;
+        min-height: 24.4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-top: 1px solid rgba(67, 66, 68, 0.2);
+        gap: 1.5rem 0;
+        padding: 1.5rem 0;
+
+        @include laptop{
+          min-height: 19rem;
+          gap: 1rem 0;
+        }
+
+        @include mobile{
+          grid-column: 1 / -1;
+          min-height: 17.25rem;
+          padding: 1rem 0;
+
+          &:nth-last-child(-n + 1) {
+            border-bottom: 1px solid rgba(67, 66, 68, 0.2);
+          }
+        }
+
+        @media (min-width: 768px) {
+          &:nth-last-child(-n + 2) {
+            border-bottom: 1px solid rgba(67, 66, 68, 0.2);
+          }
+        }
+
+        &__title{
+          margin-bottom: 1.5rem;
+
+          @include laptop{
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+          }
+
+          @include tablet {
+            font-size: 1rem;
+          }
+
+          @include mobile {
+            font-size: .9rem;
+          }
+        }
+
+        &__image{
+          width: 10.55rem;
+          height: 10.55rem;
+          border-radius: 10px;
+          background-color: #F5F5F7;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          @include laptop{
+            width: 8.05rem;
+            height: 8.05rem;
+
+          }
+
+          img{
+            flex-shrink: 0;
+            width: 4.15rem;
+            height: 6.35rem;
+            object-fit: cover;
+            object-position: center;
+
+            @include laptop{
+              width: 2.65rem;
+              height: 4.05rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.products-filter{
+  grid-column: 1 / 5;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem 0;
+
+  @include laptop{
+    gap: 1.5rem 0;
+  }
+
+  @include tablet{
+    grid-column: 1 / -1;
+    gap: .5rem 0;
+  }
+
+  &__title-filter{
+    display: none;
+
+    @include mobile{
+      display: block;
+    }
+  }
+
+  &__list{
+    display: none;
+
+    @include tablet{
+      display: flex;
+      align-items: center;
+      gap: .5rem .5rem;
+    }
+
+    .products-filter__title-button{
+      display: flex;
+      align-items: center;
+      gap: 0 1rem;
+      border: 1px solid #20376D33;
+      padding: .75rem .5rem;
+      border-radius: 10px;
+      transition: .5s;
+
+      @include mobile{
+        gap: 0 .5rem;
+        padding: .5rem .5rem;
+        border-radius: 5px;
+      }
+
+      &.active{
+
+        div{
+          opacity: .4;
+          transition: .5s;
+        }
+
+        svg{
+
+          rect{
+
+            &:nth-child(1){
+              display: none;
+            }
+          }
+        }
+      }
+
+      div{
+        transition: .5s;
+      }
+
+      &__tablet{
+        display: block;
+
+        @include mobile{
+          display: none;
+        }
+      }
+
+      &__mobile{
+        display: none;
+
+        @include mobile{
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__title{
+
+    @include tablet{
+      display: none;
+    }
+  }
+
+  &__item{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem 0;
+
+    @include tablet{
+      display: none;
+    }
+
+    &.active{
+      display: flex;
+    }
+  }
+
+  &__inner{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem .5rem;
+    max-width: 24rem;
+  }
+
+  &__button{
+    padding: .75rem .5rem;
+    border: 1px solid #20376D33;
+    background-color: transparent;
+    border-radius: 10px;
+    transition: .5s;
+
+    @include tablet{
+      padding: .5rem .5rem;
+      border-radius: 5px;
+    }
+
+    &:hover{
+      opacity: .5;
+      transition: .5s;
+    }
+
+    &.active{
+      background-color: $c-b;
+      border: 1px solid $c-b;
+      color: $c-w;
+      transition: .5s;
+    }
+  }
+
+  &__clear{
+    width: fit-content;
+    text-decoration: underline;
+    border: none;
+    padding: 0;
+    transition: .5s;
+
+    &:hover{
+      opacity: .5;
+      transition: .5s;
+    }
+
+    @include laptop{
+      margin-top: -.5rem;
+    }
+
+    @include tablet{
+      margin-top: .5rem;
+    }
+  }
+}
