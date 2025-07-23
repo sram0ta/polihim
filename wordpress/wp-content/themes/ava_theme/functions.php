@@ -214,6 +214,12 @@ function ava_polylang_strings()
         'Перейти в каталог Тары',
         'Продукция',
     );
+
+    pll_register_string(
+        'main-infocenter-link',
+        'Смотреть все новости',
+        'Главная',
+    );
 }
 
 require get_template_directory() . '/ajax-infocenter.php';

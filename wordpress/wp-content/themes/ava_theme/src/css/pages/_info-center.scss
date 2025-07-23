@@ -47,12 +47,15 @@
       margin-left: 0;
     }
 
-    &:hover{
-      background-color: #F2F3F7;
+    @media (min-width: 1024px) {
 
-      .info-center__item__description{
-        opacity: 1;
-        transition: .5s;
+      &:hover{
+        background-color: #F2F3F7;
+
+        .info-center__item__description{
+          opacity: 1;
+          transition: .5s;
+        }
       }
     }
 
@@ -223,5 +226,186 @@
   .info-center__button{
     display: flex;
     justify-content: center;
+  }
+}
+
+.single-infocenter{
+
+  .container-main__inner{
+    gap: 0;
+    padding-bottom: 10rem;
+
+    @include laptop{
+      padding-bottom: 7.5rem;
+    }
+
+    @include tablet{
+      padding-bottom: 5rem;
+    }
+
+    @include mobile{
+      padding-bottom: 4rem;
+    }
+  }
+
+  .infocenter{
+    margin-top: 2.5rem;
+
+    @include tablet{
+      margin-top: 1.5rem;
+    }
+
+    @include mobile{
+      margin-top: 1rem;
+    }
+
+    &__information{
+      grid-column: 1 / 7;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem 0;
+
+      @include tablet{
+        grid-column: 1 / -1;
+        gap: 1rem 0;
+      }
+
+      &__date{
+        display: flex;
+        align-items: center;
+        gap: 0 1.5rem;
+
+        @include tablet{
+          gap: 0 1rem;
+        }
+
+        &__number{
+          padding: .75rem 1rem;
+          border: 1px solid rgba(32, 55, 109, 0.2);
+          border-radius: 10px;
+
+          @include tablet{
+            padding: .5rem .5rem;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+
+    &__content{
+      grid-column: 7 / -1;
+
+      @include tablet{
+        grid-column: 1 / -1;
+        margin-top: 1.5rem;
+      }
+
+      &__image{
+        margin-bottom: 2.5rem;
+        width: 44.7rem;
+        height: 29.8rem;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 10px;
+
+        @include laptop{
+          margin-bottom: 2rem;
+          width: 31.9rem;
+          height: 21.3rem;
+        }
+
+        @include tablet{
+          margin-bottom: 1.5rem;
+          width: 100%;
+          height: 21.6rem;
+          border-radius: 5px;
+        }
+
+        @include mobile{
+          height: 10.7rem;
+        }
+      }
+
+      &__title{
+        margin-bottom: 1.5rem;
+
+        @include laptop{
+          margin-bottom: 1rem;
+          font-size: 1.25rem;
+        }
+
+        @include tablet {
+          font-size: 1rem;
+        }
+
+        @include mobile {
+          margin-bottom: .5rem;
+          font-size: .9rem;
+        }
+      }
+
+      &__description{
+        margin-bottom: 2.5rem;
+
+        @include laptop{
+          margin-bottom: 2rem;
+        }
+
+        @include tablet{
+          margin-bottom: 1.5rem;
+        }
+
+        ul{
+          padding-left: 1rem;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  .another-news{
+    margin-top: 10rem;
+
+    @include laptop{
+      margin-top: 7.5rem;
+    }
+    @include tablet{
+      margin-top: 5rem;
+    }
+    @include mobile{
+      margin-top: 4rem;
+    }
+
+    &__title{
+      grid-column: 7 / 12;
+      margin-bottom: 2.5rem;
+
+      @include laptop{
+        margin-bottom: 2rem;
+      }
+
+      @include tablet{
+        grid-column: 1 / 5;
+        margin-bottom: 1.5rem;
+      }
+
+      @include mobile{
+        grid-column: 1 / -1;
+      }
+    }
+
+    .info-center__list{
+      grid-column: 1 / -1;
+    }
+
+    .button-polygon{
+      grid-column: 1 / -1;
+      margin-top: 2.5rem;
+      justify-self: center;
+
+      @include laptop{
+        margin-top: 1.5rem;
+      }
+    }
   }
 }

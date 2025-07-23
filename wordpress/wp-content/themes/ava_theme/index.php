@@ -455,18 +455,11 @@ get_header();
             <?= get_template_part('template-part/section-delivery'); ?>
         </div>
         <?= get_template_part('template-part/section-industry') ?>
-        <?php    $original_id = 148;
-        $current_lang = function_exists('pll_current_language') ? pll_current_language() : apply_filters('wpml_current_language', null);
-
-        if (function_exists('pll_get_post')) {
-            $translated_id = pll_get_post($original_id, $current_lang);
-        } elseif (function_exists('wpml_object_id')) {
-            $translated_id = wpml_object_id($original_id, 'page', true, $current_lang);
-        } else {
-            $translated_id = $original_id;
+        <?php
+        $target_page = get_page_by_path('infocenter');
+        if (function_exists('pll_get_post') && $target_page) {
+            $target_page = get_post(pll_get_post($target_page->ID));
         }
-
-        $content_post = get_post($translated_id);
         ?>
         <div class="info-center container">
             <div class="info-center__inner grid-12">
@@ -474,14 +467,14 @@ get_header();
                     <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4.61853 1.36084C5.48656 0.864826 5.92057 0.61682 6.38149 0.519704C6.78935 0.43377 7.21065 0.43377 7.61851 0.519704C8.07943 0.61682 8.51345 0.864826 9.38147 1.36084L11.5815 2.61798C12.4623 3.12133 12.9027 3.373 13.2232 3.72664C13.5067 4.03952 13.7209 4.40873 13.8519 4.81011C14 5.26376 14 5.77102 14 6.78555V9.21445C14 10.229 14 10.7362 13.8519 11.1899C13.7209 11.5913 13.5067 11.9605 13.2232 12.2734C12.9027 12.627 12.4623 12.8787 11.5815 13.382L9.38147 14.6392C8.51345 15.1352 8.07943 15.3832 7.61851 15.4803C7.21065 15.5662 6.78935 15.5662 6.38149 15.4803C5.92057 15.3832 5.48656 15.1352 4.61853 14.6392L2.41853 13.382C1.53768 12.8787 1.09725 12.627 0.776833 12.2734C0.493338 11.9605 0.27908 11.5913 0.148071 11.1899C0 10.7362 0 10.229 0 9.21445V6.78555C0 5.77102 0 5.26376 0.148071 4.81011C0.27908 4.40873 0.493338 4.03952 0.776833 3.72664C1.09725 3.373 1.53768 3.12133 2.41853 2.61798L4.61853 1.36084Z" fill="#20376D"/>
                     </svg>
-                    <?= apply_filters('the_title', $content_post->post_title, $content_post->ID); ?>
+                    <?= get_the_title($target_page); ?>
                 </div>
-                <div class="info-center__title h1"><?= apply_filters('the_content', $content_post->post_content); ?></div>
+                <div class="info-center__title h1"><?= get_field('page-title', $target_page); ?></div>
             </div>
             <?php
             $posts = get_posts([
-                'post_type'      => 'info-center',
-                'numberposts'    => 6,
+                'post_type'      => 'infocenter',
+                'numberposts'    => 3,
                 'post_status'    => 'publish',
                 'orderby'        => 'date',
                 'order'          => 'DESC',
@@ -490,7 +483,7 @@ get_header();
             <div class="info-center__list">
                 <?php foreach ($posts as $post) :
                     setup_postdata($post); ?>
-                    <a href="<?php the_permalink(); ?>" class="info-center__item grid-12">
+                    <a href="<?= get_the_permalink($post); ?>" class="info-center__item grid-12">
                         <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title(); ?>" class="info-center__item__image" loading="lazy">
                         <span class="info-center__item__date">
                             <span class="info-center__item__date__number h1"><?= get_the_date('d'); ?></span>
@@ -509,8 +502,8 @@ get_header();
                 <?php endforeach;
                 wp_reset_postdata(); ?>
             </div>
-            <a href="<?= pll_current_language(); ?>/infocenter/" class="button-polygon">
-                <span class="button-polygon__title p1">Смотреть все новости</span>
+            <a href="/<?= pll_current_language(); ?>/infocenter/" class="button-polygon">
+                <span class="button-polygon__title p1"><?= pll__('Смотреть все новости'); ?></span>
                 <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                     <span class="button-polygon__icon__inner">
                         <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
