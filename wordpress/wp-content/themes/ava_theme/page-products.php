@@ -88,14 +88,14 @@ get_header();
                     </div>
                     <div class="catalog-product__content__title-lubricants h2"><?php the_field('lubricants_title_first'); ?></div>
                     <p class="catalog-product__content__description p1"><?php the_field('lubricants_description'); ?></p>
-                    <a href="<?= pll_current_language() ?>/products/tare" class="button-long _blue">
+                    <a href="<?= pll_current_language() ?>/products/lubricants" class="button-long _blue">
                         <span class="button-long__inner">
                             <span class="button-long__title p2"><?= pll__('Каталог смазок и СОЖ'); ?></span>
                             <span class="button-long__title p2"><?= pll__('Каталог смазок и СОЖ'); ?></span>
                         </span>
                     </a>
                     <div class="catalog-product__content__title-tare h5"><?php the_field('lubricants_title_second'); ?></div>
-                    <a href="<?= pll_current_language() ?>/products/lubricants" class="catalog-product__content__link p1"><?= pll__('Перейти в каталог Тары'); ?></a>
+                    <a href="<?= pll_current_language() ?>/products/tare" class="catalog-product__content__link p1"><?= pll__('Перейти в каталог Тары'); ?></a>
                 </div>
             </div>
             <?= get_template_part('template-part/section-delivery'); ?>
