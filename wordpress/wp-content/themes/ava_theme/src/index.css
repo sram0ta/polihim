@@ -186,7 +186,7 @@ h5, .h5 {
   font-size: 11.5rem;
   font-weight: 500;
   line-height: 100%;
-  color: #434244;
+  color: #20376D;
   letter-spacing: -0.05em;
 }
 @media (max-width: 1366px) {
@@ -1675,7 +1675,8 @@ h5, .h5 {
   grid-column: 1/5;
   display: flex;
   align-items: baseline;
-  gap: 0 0.5rem;
+  gap: 0.5rem 0.5rem;
+  flex-wrap: wrap;
 }
 @media (max-width: 1024px) {
   .breadcrumbs {
@@ -2410,6 +2411,198 @@ h5, .h5 {
   .page-lubricants .lubricants__content__item__link-list {
     gap: 0 1rem;
   }
+}
+
+.single-lubricants .container-main__inner {
+  gap: 0;
+}
+.single-lubricants .title {
+  margin: 2.5rem 0 1.5rem 0;
+}
+@media (max-width: 1366px) {
+  .single-lubricants .title {
+    margin: 1.5rem 0 1rem 0;
+  }
+}
+@media (max-width: 1024px) {
+  .single-lubricants .title {
+    margin: 1rem 0 1rem 0;
+  }
+}
+.single-lubricants .description {
+  max-width: 40.5rem;
+  margin-bottom: 1.5rem;
+}
+@media (max-width: 1366px) {
+  .single-lubricants .description {
+    max-width: 100%;
+    font-size: 1.25rem;
+  }
+}
+@media (max-width: 1024px) {
+  .single-lubricants .description {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+}
+@media (max-width: 576px) {
+  .single-lubricants .description {
+    font-size: 0.9rem;
+  }
+}
+.single-lubricants .information {
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem 1.5rem;
+  flex-wrap: wrap;
+}
+@media (max-width: 1366px) {
+  .single-lubricants .information {
+    margin-bottom: 1.5rem;
+    gap: 1rem 1rem;
+  }
+}
+.single-lubricants .information__tag {
+  padding: 0.75rem 0.5rem;
+  border: 1px solid rgba(32, 55, 109, 0.2);
+  border-radius: 10px;
+}
+@media (max-width: 576px) {
+  .single-lubricants .information__tag {
+    padding: 0.5rem 0.5rem;
+    border-radius: 5px;
+  }
+}
+.single-lubricants .information__tag-list {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem 0.5rem;
+  flex-wrap: wrap;
+}
+.single-lubricants .information__tag__file {
+  color: #20376D;
+  text-decoration: underline;
+  transition: 0.5s;
+}
+.single-lubricants .information__tag__file:hover {
+  opacity: 0.4;
+  transition: 0.5s;
+}
+.single-lubricants .content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem 0;
+  padding-bottom: 10rem;
+}
+@media (max-width: 1366px) {
+  .single-lubricants .content-list {
+    padding-bottom: 8rem;
+  }
+}
+@media (max-width: 1024px) {
+  .single-lubricants .content-list {
+    padding-bottom: 5rem;
+  }
+}
+@media (max-width: 576px) {
+  .single-lubricants .content-list {
+    padding-bottom: 4rem;
+  }
+}
+.single-lubricants .content-list .content__item {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(67, 66, 68, 0.2);
+}
+@media (max-width: 1024px) {
+  .single-lubricants .content-list .content__item {
+    padding-top: 1rem;
+  }
+}
+.single-lubricants .content-list .content__item__title {
+  grid-column: 1/7;
+}
+@media (max-width: 1366px) {
+  .single-lubricants .content-list .content__item__title {
+    font-size: 1.25rem;
+  }
+}
+@media (max-width: 1024px) {
+  .single-lubricants .content-list .content__item__title {
+    grid-column: 1/-1;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+}
+@media (max-width: 576px) {
+  .single-lubricants .content-list .content__item__title {
+    font-size: 0.9rem;
+  }
+}
+.single-lubricants .content-list .content__item__description {
+  grid-column: 7/-1;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0 0.5rem;
+}
+@media (max-width: 1024px) {
+  .single-lubricants .content-list .content__item__description {
+    grid-column: 1/-1;
+  }
+}
+.single-lubricants .content-list .content__item__description p {
+  grid-column: 1/-1;
+}
+.single-lubricants .content-list .content__item__description ul {
+  grid-column: 1/-1;
+  margin: 0;
+  padding-left: 1rem;
+}
+.single-lubricants .content-list .content__item__description table {
+  grid-column: 1/5;
+}
+@media (max-width: 1024px) {
+  .single-lubricants .content-list .content__item__description table {
+    grid-column: 1/-1;
+  }
+}
+.single-lubricants .content-list .content__item__description table tbody tr {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+  height: 100% !important;
+  border-bottom: 1px solid rgba(67, 66, 68, 0.2);
+}
+@media (max-width: 1366px) {
+  .single-lubricants .content-list .content__item__description table tbody tr {
+    padding: 1rem 0;
+  }
+}
+.single-lubricants .content-list .content__item__description table tbody tr:first-child {
+  padding: 0 0 1.5rem 0;
+}
+@media (max-width: 1366px) {
+  .single-lubricants .content-list .content__item__description table tbody tr:first-child {
+    padding: 0 0 1rem 0;
+  }
+}
+.single-lubricants .content-list .content__item__description table tbody tr:last-child {
+  padding: 1.5rem 0 0 0;
+  border-bottom: none;
+}
+@media (max-width: 1366px) {
+  .single-lubricants .content-list .content__item__description table tbody tr:last-child {
+    padding: 1rem 0 0 0;
+  }
+}
+.single-lubricants .content-list .content__item__description table tbody tr td {
+  display: block;
+  height: 100% !important;
+  padding: 0;
+  white-space: nowrap;
+}
+.single-lubricants .content-list .content__item__description table tbody tr td:last-child {
+  width: fit-content !important;
 }
 
 .page-contacts .container-main__inner {
