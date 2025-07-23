@@ -58,10 +58,10 @@ $items = array_slice($items, 0, 2);
             </div>
             <img src="<?= esc_url($item['image']['url']); ?>" alt="<?= esc_attr($item['image']['alt']); ?>" class="industry__item__image" loading="lazy">
             <a href="<?= esc_url(get_permalink($item['link'])); ?>" class="button-long _blue">
-            <span class="button-long__inner">
-                <span class="button-long__title p2"><?= pll__('Узнать подробнее'); ?></span>
-                <span class="button-long__title p2"><?= pll__('Узнать подробнее'); ?></span>
-            </span>
+                <span class="button-long__inner">
+                    <span class="button-long__title p2"><?= pll__('Узнать подробнее'); ?></span>
+                    <span class="button-long__title p2"><?= pll__('Узнать подробнее'); ?></span>
+                </span>
             </a>
         </div>
     <?php endforeach; ?>

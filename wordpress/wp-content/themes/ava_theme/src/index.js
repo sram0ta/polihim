@@ -9,6 +9,7 @@ window.addEventListener('DOMContentLoaded', function() {
     galleryAdvantages();
     scaleAnimation();
     qualityAnimation();
+    heroAnimation();
 });
 
 const wp_ajax = '/wp-admin/admin-ajax.php';
@@ -54,6 +55,7 @@ const scaleAnimation = () => {
 }
 
 const qualityAnimation = () => {
+
     const items = document.querySelectorAll(".quality__item");
     const rulers = document.querySelectorAll(".quality__ruler__item");
     if (!items.length || rulers.length !== items.length) return;
@@ -71,6 +73,8 @@ const qualityAnimation = () => {
             path: iconContainer.dataset.json,
         });
     });
+
+    if (window.innerWidth < 1024) return;
 
     const tl = gsap.timeline({
         scrollTrigger: {
@@ -101,6 +105,20 @@ const qualityAnimation = () => {
     });
 };
 
+const heroAnimation = () => {
+    if (document.querySelector('.upper-information__image')) {
+        gsap.to(".upper-information__image", {
+            backgroundPositionY: "-100px",
+            ease: "linear",
+            scrollTrigger: {
+                trigger: ".upper-information__image",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+            }
+        })
+    }
+}
 
 
 

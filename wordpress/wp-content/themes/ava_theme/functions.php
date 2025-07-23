@@ -131,6 +131,30 @@ function ava_polylang_strings()
         'Узнать подробнее',
         'Главная',
     );
+
+    pll_register_string(
+        'catalog-link',
+        'Перейти в каталог продукции',
+        'Продукция',
+    );
+
+    pll_register_string(
+        'catalog-item-pdf',
+        'Скачать PDF',
+        'Продукция',
+    );
+
+    pll_register_string(
+        'catalog-link-lubricants',
+        'Каталог смазок и СОЖ',
+        'Продукция',
+    );
+
+    pll_register_string(
+        'catalog-link-tare',
+        'Перейти в каталог Тары',
+        'Продукция',
+    );
 }
 
 require get_template_directory() . '/ajax-infocenter.php';

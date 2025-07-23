@@ -94,7 +94,7 @@ h2, .h2{
   }
 
   @include mobile {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -261,7 +261,7 @@ h5, .h5{
     padding: .5rem 1rem;
   }
 
-  @include laptop{
+  @include mobile{
     min-width: 5.5rem;
   }
 
@@ -348,6 +348,7 @@ h5, .h5{
   display: flex;
   align-items: center;
   gap: 0 1rem;
+  width: fit-content;
   border: none;
   padding: 0;
 
@@ -388,6 +389,11 @@ h5, .h5{
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include laptop{
+      width: 2.4rem;
+      height: 2.85rem;
+    }
 
     &__inner{
       position: relative;
@@ -552,9 +558,17 @@ h5, .h5{
   }
 }
 
+.anchor{
+  position: absolute;
+  top: -5rem;
+  pointer-events: none;
+  visibility: hidden;
+}
+
 @import "inc/_header";
 @import "pages/_main";
 @import "pages/_info-center";
 @import "pages/_tara";
 @import "pages/_contacts";
+@import "pages/_products";
 @import "inc/_footer";
