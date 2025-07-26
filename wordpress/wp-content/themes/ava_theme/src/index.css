@@ -3416,11 +3416,11 @@ h5, .h5 {
   }
 }
 .page-production .cycle__content__description {
-  max-width: 20.5rem;
+  max-width: 28.25rem;
 }
 @media (max-width: 1024px) {
   .page-production .cycle__content__description {
-    max-width: 23rem;
+    max-width: 27.2rem;
   }
 }
 @media (max-width: 576px) {
