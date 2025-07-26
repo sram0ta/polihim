@@ -29,7 +29,7 @@ get_header();
                 <div class="hero__information__title h1"><?php the_field('hero__title'); ?></div>
                 <p class="hero__information__description p1"><?php the_field('hero_description'); ?></p>
                 <a href="#" class="button-polygon">
-                    <span class="button-polygon__title p1">Перейти в каталог продукции</span>
+                    <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                     <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                         <span class="button-polygon__icon__inner">
                             <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +55,7 @@ get_header();
                     <div class="customer-focus__information__title h3"><?php the_field('customer_title'); ?></div>
                     <div class="customer-focus__information__description p1"><?php the_field('customer_description'); ?></div>
                     <a href="#" class="button-polygon">
-                        <span class="button-polygon__title p1">Перейти в каталог продукции</span>
+                        <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                         <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                             <span class="button-polygon__icon__inner">
                                 <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,11 +69,11 @@ get_header();
                     </a>
                 </div>
             </div>
-            <div class="advantages grid-12">
-                <div class="advantages__information">
-                    <div class="advantages__information__title h2"><?php the_field('advantages_title'); ?></div>
-                    <div class="advantages__information__description p1"><?php the_field('advantages_description'); ?></div>
-                    <div class="advantages__information__navigation">
+            <div class="possibilities grid-12">
+                <div class="possibilities__information">
+                    <div class="possibilities__information__title h2"><?php the_field('advantages_title'); ?></div>
+                    <div class="possibilities__information__description p1"><?php the_field('advantages_description'); ?></div>
+                    <div class="possibilities__information__navigation">
                         <button class="navigation__button _prev">
                             <span class="navigation__button__border">
                                  <svg width="100" height="109" viewBox="0 0 100 109" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -106,7 +106,7 @@ get_header();
                         </button>
                     </div>
                 </div>
-                <div class="advantages__gallery">
+                <div class="possibilities__gallery">
                     <div class="swiper" id="advantages-gallery">
                         <div class="swiper-wrapper">
                             <?php
@@ -119,13 +119,13 @@ get_header();
                                 $is_last = $index === $total;
                                 ?>
                                 <div class="swiper-slide advantages__gallery__item<?= $is_last ? ' last' : '' ?>">
-                                    <div class="advantages__gallery__item__inner">
-                                        <img src="/wp-content/uploads/2025/07/image-1.jpg" alt="" class="advantages__gallery__item__image" loading="lazy">
-                                        <h4 class="advantages__gallery__item__title h4"><?php the_sub_field('title'); ?></h4>
-                                        <p class="advantages__gallery__item__description p1"><?php the_sub_field('description'); ?></p>
+                                    <div class="possibilities__gallery__item__inner">
+                                        <img src="/wp-content/uploads/2025/07/image-1.jpg" alt="" class="possibilities__gallery__item__image" loading="lazy">
+                                        <h4 class="possibilities__gallery__item__title h4"><?php the_sub_field('title'); ?></h4>
+                                        <p class="possibilities__gallery__item__description p1"><?php the_sub_field('description'); ?></p>
                                     </div>
-                                    <div class="advantages__gallery__item__ruler">
-                                        <div class="advantages__gallery__item__ruler__number p2"><?= sprintf('%02d', $index); ?></div>
+                                    <div class="possibilities__gallery__item__ruler">
+                                        <div class="possibilities__gallery__item__ruler__number p2"><?= sprintf('%02d', $index); ?></div>
                                         <?php if ($is_last): ?>
                                             <svg width="754" height="71" viewBox="0 0 754 71" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <line x1="0.5" y1="10" x2="0.499997" y2="71" stroke="#20376D"/>
@@ -214,7 +214,7 @@ get_header();
                         ?>
                     </div>
                     <a href="#" class="button-polygon">
-                        <span class="button-polygon__title p1">Перейти в каталог продукции</span>
+                        <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                         <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                             <span class="button-polygon__icon__inner">
                                 <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -257,7 +257,7 @@ get_header();
                     <div class="wide-range__information__title h1"><?php the_field('wide-range_title'); ?></div>
                     <p class="wide-range__information__description p1"><?php the_field('wide-range_description'); ?></p>
                     <a href="#" class="button-polygon">
-                        <span class="button-polygon__title p1">Перейти в каталог продукции</span>
+                        <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                         <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                             <span class="button-polygon__icon__inner">
                                 <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -390,7 +390,7 @@ get_header();
                         <div class="quality__information">
                             <div class="quality__description p1"><?php the_field('quality_description'); ?></div>
                             <a href="#" class="button-polygon">
-                                <span class="button-polygon__title p1">Перейти в каталог продукции</span>
+                                <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                                 <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                                 <span class="button-polygon__icon__inner">
                                     <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">

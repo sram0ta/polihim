@@ -36,16 +36,28 @@
             </svg>
         </a>
         <nav class="header__navigation">
-            <a href="#" class="header__navigation__item p2">Производство</a>
-            <a href="#" class="header__navigation__item p2">Лаборатория</a>
-            <a href="#" class="header__navigation__item p2">О компании</a>
-            <a href="<?= pll_current_language(); ?>/infocenter/" class="header__navigation__item p2">Инфоцентр</a>
+            <a href="/<?= pll_current_language(); ?>/production/" class="header__navigation__item p2">Производство</a>
+            <a href="/<?= pll_current_language(); ?>/laboratory/" class="header__navigation__item p2">Лаборатория</a>
+            <a href="/<?= pll_current_language(); ?>/about/" class="header__navigation__item p2">О компании</a>
+            <a href="/<?= pll_current_language(); ?>/infocenter/" class="header__navigation__item p2">Инфоцентр</a>
         </nav>
     </div>
     <div class="header__inner">
+        <?php
+        $languages = pll_the_languages(['raw' => 1, 'hide_current' => 0]);
+        $current_lang = '';
+        ?>
         <div class="header__lang">
             <div class="header__lang__activity">
-                <div class="header__lang__activity__title p2">Ru</div>
+                <?php
+                foreach ($languages as $lang) {
+                    if ($lang['current_lang']) {
+                        $current_lang = strtoupper($lang['slug']);
+                        break;
+                    }
+                }
+                ?>
+                <div class="header__lang__activity__title p2"><?= $current_lang; ?></div>
                 <div class="header__lang__activity__icon">
                     <svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="3" width="1" height="7" fill="#20376D"/>
@@ -54,7 +66,13 @@
                 </div>
             </div>
             <div class="header__lang__all">
-                <a href="#" class="header__lang__all__link p2">En</a>
+                <?php foreach ($languages as $lang): ?>
+                    <?php if (!$lang['current_lang']): ?>
+                        <a href="<?= esc_url($lang['url']); ?>" class="header__lang__all__link p2">
+                            <?= strtoupper(esc_html($lang['slug'])); ?>
+                        </a>
+                    <?php endif; ?>
+                <?php endforeach; ?>
             </div>
         </div>
         <div class="header__search">

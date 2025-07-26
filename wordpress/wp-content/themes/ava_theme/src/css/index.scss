@@ -82,7 +82,7 @@ h2, .h2{
   font-size: 3.5rem;
   font-weight: 500;
   line-height: 110%;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
   color: $c-g;
 
   @include laptop {
@@ -429,6 +429,16 @@ h5, .h5{
   border: none;
   transition: .5s;
 
+  @include laptop{
+    width: 4.25rem;
+    height: 4.9rem;
+  }
+
+  @include mobile{
+    width: 3rem;
+    height: 3.45rem;
+  }
+
   &:hover{
 
     .navigation__button__border{
@@ -571,4 +581,5 @@ h5, .h5{
 @import "pages/_lubricants";
 @import "pages/_contacts";
 @import "pages/_products";
+@import "pages/_production";
 @import "inc/_footer";

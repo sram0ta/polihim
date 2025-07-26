@@ -28,18 +28,32 @@ const openLanguage = () => {
 
 const galleryAdvantages = () => {
     if (document.querySelector('#advantages-gallery')) {
-        let swiper = new Swiper("#advantages-gallery", {
+        const remToPx = (rem) => {
+            return parseFloat(getComputedStyle(document.documentElement).fontSize) * rem;
+        };
+
+        const swiper = new Swiper("#advantages-gallery", {
             slidesPerView: 1.25,
             speed: 500,
             loop: false,
-            spaceBetween: 10,
+            spaceBetween: remToPx(0.5),
             navigation: {
-                prevEl: '.advantages ._prev',
-                nextEl: '.advantages ._next',
+                prevEl: '.possibilities ._prev',
+                nextEl: '.possibilities ._next',
             },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1
+                },
+                576: {
+                    slidesPerView: 1.25
+                }
+            }
         });
     }
 }
+
+
 
 const scaleAnimation = () => {
     if (document.querySelector('.scale__list')){
