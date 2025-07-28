@@ -7,9 +7,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
     openLanguage();
     galleryAdvantages();
+    galleryBenefits();
     scaleAnimation();
     qualityAnimation();
     heroAnimation();
+    ourClientsItemsAnimation();
 });
 
 const wp_ajax = '/wp-admin/admin-ajax.php';
@@ -52,6 +54,25 @@ const galleryAdvantages = () => {
         });
     }
 }
+
+const galleryBenefits = () => {
+    if (document.querySelector('#benefits-gallery')) {
+        const swiper = new Swiper("#benefits-gallery", {
+            slidesPerView: 1,
+            speed: 500,
+            loop: false,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            navigation: {
+                prevEl: '.benefits ._prev',
+                nextEl: '.benefits ._next',
+            },
+        });
+    }
+}
+
 
 
 
@@ -134,9 +155,24 @@ const heroAnimation = () => {
     }
 }
 
+const ourClientsItemsAnimation = () => {
+    const items = document.querySelectorAll('.our-clients__content__item');
 
+    if (!items.length || window.innerWidth < 1024) return;
 
-
-
-
+    items.forEach((item, index) => {
+        gsap.to(item, {
+            scrollTrigger: {
+                trigger: item,
+                start: 'top center',
+                // toggleActions: 'play none none none',
+                onEnter: () => {
+                    setTimeout(() => {
+                        item.classList.add('active');
+                    }, index * 150); // задержка между появлением каждого
+                },
+            }
+        });
+    });
+};
 
