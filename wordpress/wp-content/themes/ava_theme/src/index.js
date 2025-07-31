@@ -8,10 +8,14 @@ window.addEventListener('DOMContentLoaded', function() {
     openLanguage();
     galleryAdvantages();
     galleryBenefits();
+    galleryHistory();
+    achievementLottie();
     scaleAnimation();
     qualityAnimation();
     heroAnimation();
     ourClientsItemsAnimation();
+    advantagesAnimation();
+    hashUrl();
 });
 
 const wp_ajax = '/wp-admin/admin-ajax.php';
@@ -73,6 +77,67 @@ const galleryBenefits = () => {
     }
 }
 
+const galleryHistory = () => {
+    if (document.querySelector('#history-content') && document.querySelector('#history-ruler')) {
+
+        const galleryHistoryRulerSwiper = new Swiper("#history-ruler", {
+            slidesPerView: 2.2,
+            speed: 500,
+            loop: false,
+            allowTouchMove: false,
+            simulateTouch: false,
+            allowSlidePrev: false,
+            allowSlideNext: false,
+            keyboard: false,
+            mousewheel: false,
+        });
+
+        const galleryHistorySwiper = new Swiper("#history-content", {
+            slidesPerView: 1,
+            speed: 500,
+            loop: false,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            watchSlidesProgress: true,
+            watchSlidesVisibility: true,
+            virtualTranslate: false,
+            observer: true,
+            observeParents: true,
+            navigation: {
+                prevEl: '.history ._prev',
+                nextEl: '.history ._next',
+            },
+            controller: {
+                control: galleryHistoryRulerSwiper
+            },
+            on: {
+                init: function () {
+                    const activeIndex = this.activeIndex;
+                    const rulerSlides = document.querySelectorAll('#history-ruler .swiper-slide');
+                    rulerSlides.forEach(slide => slide.classList.remove('is-active'));
+                    if (rulerSlides[activeIndex]) {
+                        rulerSlides[activeIndex].classList.add('is-active');
+                    }
+                },
+                slideChange: function () {
+                    const activeIndex = this.activeIndex;
+                    const rulerSlides = document.querySelectorAll('#history-ruler .swiper-slide');
+                    rulerSlides.forEach(slide => slide.classList.remove('is-active'));
+                    if (rulerSlides[activeIndex]) {
+                        rulerSlides[activeIndex].classList.add('is-active');
+                    }
+                }
+            }
+        });
+
+        galleryHistorySwiper.init();
+
+        galleryHistoryRulerSwiper.controller.control = galleryHistorySwiper;
+    }
+};
+
 
 
 
@@ -87,6 +152,24 @@ const scaleAnimation = () => {
             }
         });
     }
+}
+
+const achievementLottie = () => {
+    const items = document.querySelectorAll(".achievement__content");
+    if (!items.length) return;
+
+
+    items.forEach(item => {
+        const iconContainer = item.querySelector(".achievement__content__animate");
+
+        lottie.loadAnimation({
+            container: iconContainer,
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            path: iconContainer.dataset.json,
+        });
+    });
 }
 
 const qualityAnimation = () => {
@@ -165,14 +248,44 @@ const ourClientsItemsAnimation = () => {
             scrollTrigger: {
                 trigger: item,
                 start: 'top center',
-                // toggleActions: 'play none none none',
                 onEnter: () => {
                     setTimeout(() => {
                         item.classList.add('active');
-                    }, index * 150); // задержка между появлением каждого
+                    }, index * 150);
                 },
             }
         });
     });
 };
 
+const advantagesAnimation = () => {
+    const items = document.querySelectorAll('.advantages__item');
+
+    if (!items.length || window.innerWidth < 1024) return;
+
+    items.forEach((item) => {
+        ScrollTrigger.create({
+            trigger: item,
+            start: 'top center',
+            toggleClass: { targets: item, className: 'active' },
+            once: true
+        });
+    });
+};
+
+const hashUrl = () => {
+    const hash = window.location.hash;
+
+    if (!hash) return;
+
+    const scrollToHash = () => {
+        const target = document.querySelector(hash);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            setTimeout(scrollToHash, 100);
+        }
+    };
+
+    setTimeout(scrollToHash, 300);
+}

@@ -28,7 +28,7 @@ get_header();
             <div class="hero__information">
                 <div class="hero__information__title h1"><?php the_field('hero__title'); ?></div>
                 <p class="hero__information__description p1"><?php the_field('hero_description'); ?></p>
-                <a href="#" class="button-polygon">
+                <a href="/<?= pll_current_language(); ?>/products/#catalog" class="button-polygon">
                     <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                     <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                         <span class="button-polygon__icon__inner">
@@ -54,7 +54,7 @@ get_header();
                 <div class="customer-focus__information">
                     <div class="customer-focus__information__title h3"><?php the_field('customer_title'); ?></div>
                     <div class="customer-focus__information__description p1"><?php the_field('customer_description'); ?></div>
-                    <a href="#" class="button-polygon">
+                    <a href="/<?= pll_current_language(); ?>/products/#catalog" class="button-polygon">
                         <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                         <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                             <span class="button-polygon__icon__inner">
@@ -120,7 +120,7 @@ get_header();
                                 ?>
                                 <div class="swiper-slide advantages__gallery__item<?= $is_last ? ' last' : '' ?>">
                                     <div class="possibilities__gallery__item__inner">
-                                        <img src="/wp-content/uploads/2025/07/image-1.jpg" alt="" class="possibilities__gallery__item__image" loading="lazy">
+                                        <img src="<?= get_sub_field('image')['url']; ?>" alt="<?= get_sub_field('image')['alt']; ?>" class="possibilities__gallery__item__image" loading="lazy">
                                         <h4 class="possibilities__gallery__item__title h4"><?php the_sub_field('title'); ?></h4>
                                         <p class="possibilities__gallery__item__description p1"><?php the_sub_field('description'); ?></p>
                                     </div>
@@ -213,7 +213,7 @@ get_header();
                             endwhile;
                         ?>
                     </div>
-                    <a href="#" class="button-polygon">
+                    <a href="/<?= pll_current_language(); ?>/products/#catalog" class="button-polygon">
                         <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                         <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                             <span class="button-polygon__icon__inner">
@@ -256,7 +256,7 @@ get_header();
                 <div class="wide-range__information">
                     <div class="wide-range__information__title h1"><?php the_field('wide-range_title'); ?></div>
                     <p class="wide-range__information__description p1"><?php the_field('wide-range_description'); ?></p>
-                    <a href="#" class="button-polygon">
+                    <a href="/<?= pll_current_language(); ?>/products/#catalog" class="button-polygon">
                         <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                         <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                             <span class="button-polygon__icon__inner">
@@ -389,7 +389,7 @@ get_header();
                     <div class="quality__inner grid-12">
                         <div class="quality__information">
                             <div class="quality__description p1"><?php the_field('quality_description'); ?></div>
-                            <a href="#" class="button-polygon">
+                            <a href="/<?= pll_current_language(); ?>/products/#catalog" class="button-polygon">
                                 <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                                 <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                                 <span class="button-polygon__icon__inner">

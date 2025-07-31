@@ -76,6 +76,14 @@ function allow_json_upload($mimes) {
 }
 add_filter('upload_mimes', 'allow_json_upload');
 
+function add_file_types_to_uploads($file_types){
+    $new_filetypes = array();
+    $new_filetypes['json'] = 'application/json';
+    $file_types = array_merge($file_types, $new_filetypes );
+    return $file_types;
+}
+add_filter('upload_mimes', 'add_file_types_to_uploads');
+
 // Убирает p и br из contact form 7
 add_filter('wpcf7_autop_or_not', '__return_false');
 

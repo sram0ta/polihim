@@ -1168,6 +1168,24 @@
     }
   }
 
+  &__number{
+
+    &__inner{
+      grid-column: 1 / 4;
+      grid-row: 4 / -1;
+      align-self: end;
+      padding-bottom: 2.5rem;
+
+      @include laptop{
+        padding-bottom: 1.5rem;
+      }
+
+      @include tablet{
+        display: none;
+      }
+    }
+  }
+
   &__link{
     grid-column: 5 / 9;
     margin-top: 2rem;

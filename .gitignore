@@ -4,6 +4,7 @@
 .env
 docker-compose.yml
 php.ini
+/dump/
 
 # --- WP Core ---
 /wordpress/wp-admin/

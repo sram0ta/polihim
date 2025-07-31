@@ -40,7 +40,7 @@ get_header();
                 <div class="upper-information__title h1"><?php the_field('page-title'); ?></div>
                 <p class="upper-information__description p1"><?php the_field('page-description'); ?></p>
                 <div class="upper-information__link">
-                    <a href="#catalog" class="button-polygon">
+                    <a href="/<?= pll_current_language(); ?>/products/#catalog" class="button-polygon">
                         <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                         <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                             <span class="button-polygon__icon__inner">

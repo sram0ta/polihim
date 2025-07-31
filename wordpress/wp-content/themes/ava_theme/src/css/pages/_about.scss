@@ -1,0 +1,978 @@
+.page-about{
+
+  .breadcrumbs{
+    grid-row: 1 / 1;
+  }
+
+  .cycle{
+
+    &__content{
+
+      &__description{
+        max-width: 31rem;
+      }
+    }
+  }
+
+  .achievement{
+    padding-bottom: 10rem;
+
+    @include laptop{
+      padding-bottom: 7.5rem;
+    }
+
+    @include tablet{
+      padding-bottom: 5rem;
+    }
+
+    @include mobile{
+      padding-bottom: 4rem;
+    }
+
+    &__title{
+      grid-column: 5 / -1;
+      margin-bottom: 2.5rem;
+
+      @include laptop{
+        margin-bottom: 1.5rem;
+      }
+
+      @include tablet{
+        grid-column: 1 / -1;
+      }
+
+      @include mobile{
+        margin-bottom: 1rem;
+      }
+    }
+
+    &__image{
+      width: 5rem;
+      height: auto;
+
+      @include laptop{
+        width: 3.5rem;
+      }
+
+      &:not(:first-child){
+        margin-top: -1rem;
+
+        @include laptop{
+          margin-top: -.75rem;
+        }
+      }
+
+      &-list{
+        grid-column: 1 / 2;
+
+        @include tablet{
+          display: none;
+        }
+      }
+    }
+
+    &__content{
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 0 .5rem;
+
+      @include tablet{
+        display: flex;
+        align-items: center;
+      }
+
+      @include mobile{
+        flex-direction: column;
+        gap: .5rem 0;
+      }
+
+      &__inner{
+        grid-column: 5 / -1;
+        display: flex;
+        flex-direction: column;
+        gap: .5rem 0;
+
+        @include tablet{
+          grid-column: 1 / -1;
+        }
+      }
+
+      &__animate{
+        grid-column: 1 / 3;
+        width: 100%;
+        height: 14.6rem;
+        border-radius: 10px;
+        background-color: #F5F5F7;
+
+        @include laptop{
+          height: 10.3rem;
+        }
+
+        @include tablet{
+          width: 10.3rem;
+          height: 10.3rem;
+          border-radius: 5px;
+        }
+
+        @include mobile{
+          width: 100%;
+          height: 7.5rem;
+        }
+      }
+
+      &__information{
+        grid-column: 3 / -1;
+        position: relative;
+        padding: 1.5rem;
+        background-color: #F5F5F7;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @include laptop{
+          padding: 1rem;
+        }
+
+        @include tablet{
+          height: 100%;
+          flex: 1;
+          border-radius: 5px;
+        }
+
+        @include mobile{
+          padding: .5rem;
+          gap: 1.5rem;
+          min-height: 11.5rem;
+        }
+
+        &__title{
+          max-width: 37.85rem;
+
+          @include laptop{
+            max-width: 18.75rem;
+          }
+
+          @include tablet{
+            max-width: 15.35rem;
+          }
+
+          @include mobile{
+            max-width: 12.75rem;
+          }
+        }
+
+        &__description{
+          max-width: 31rem;
+
+          @include laptop{
+            max-width: 21.4rem;
+          }
+
+          @include tablet{
+            max-width: 19.8rem;
+          }
+
+          @include mobile{
+            max-width: 100%;
+          }
+        }
+
+        &__icon{
+          position: absolute;
+          top: 1.5rem;
+          right: 1.5rem;
+          width: .7rem;
+          height: .8rem;
+
+          @include laptop{
+            top: 1rem;
+            right: 1rem;
+            width: .5rem;
+            height: .55rem;
+          }
+        }
+      }
+    }
+  }
+
+  .advantages{
+
+    &__paragraph{
+      grid-column: 1 /4;
+      display: flex;
+      align-items: baseline;
+      gap: 0 .5rem;
+
+      @include tablet{
+        grid-column: 1 / -1;
+      }
+
+      &__icon{
+        width: .7rem;
+        height: .8rem;
+        flex-shrink: 0;
+
+        @include laptop{
+          width: .5rem;
+          height: .55rem;
+        }
+      }
+    }
+
+    &__title{
+      grid-column: 7 / -1;
+
+      @include tablet{
+        grid-column: 1 / -1;
+        margin-top: 1rem;
+        max-width: 80%;
+      }
+
+      @include mobile{
+        max-width: 100%;
+      }
+    }
+
+    &__list{
+      grid-column: 1 / -1;
+      margin-top: 2.5rem;
+
+      @include laptop{
+        margin-top: 2rem;
+      }
+
+      @include mobile{
+        margin-top: 1.5rem;
+      }
+    }
+
+    &__item{
+      padding: 2.5rem 0;
+      border-top: 1px solid rgba(67, 66, 68, 0.2);
+      line-height: 0;
+
+      @include laptop{
+        padding: 2rem 0;
+      }
+
+      @include tablet{
+        padding: 1.5rem 0;
+      }
+
+      @include mobile{
+        padding: 1rem 0;
+      }
+
+      &:last-child{
+        border-bottom: 1px solid rgba(67, 66, 68, 0.2);
+      }
+
+      &.active{
+
+        .advantages__item__image{
+          width: 100%;
+          transition: .5s;
+        }
+      }
+
+      &__image{
+        width: 29.65rem;
+        height: 21.25rem;
+        object-fit: cover;
+        object-position: left;
+        border-radius: 10px;
+        transition: .5s;
+
+        @include laptop{
+          width: 21.1rem;
+          height: 15.15rem;
+        }
+
+        @include tablet{
+          width: 100%;
+          height: 20rem;
+          border-radius: 5px;
+        }
+
+        @include mobile{
+          height: 9rem;
+        }
+
+        &__inner{
+          grid-column: 1 / 6;
+
+          @include tablet{
+            grid-column: 1 / -1;
+          }
+        }
+      }
+
+      &__content{
+        grid-column: 7 / -1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @include tablet{
+          grid-column: 1 / -1;
+          margin-top: 1rem;
+        }
+
+        &__number{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 2.8rem;
+          height: 2.8rem;
+          border: 1px solid #20376D33;
+          border-radius: 5px;
+
+          @include laptop{
+            width: 2rem;
+            height: 2rem;
+          }
+
+          @include tablet{
+            display: none;
+          }
+        }
+
+        &__title{
+          margin-top: 2.5rem;
+
+          @include laptop{
+            margin-top: 1.5rem;
+          }
+
+          @include tablet{
+            margin-top: 0;
+          }
+        }
+
+        &__description{
+          margin-top: 1.5rem;
+          max-width: 22.75rem;
+
+          @include laptop{
+            max-width: 18.35rem;
+          }
+
+          @include tablet{
+            max-width: 18.5rem;
+            margin-top: 1rem;
+          }
+
+          @include mobile{
+            margin-top: .5rem;
+          }
+        }
+
+        &__icon{
+          width: .7rem;
+          height: .8rem;
+
+          @include laptop{
+            width: .5rem;
+            height: .55rem;
+          }
+
+          @include tablet{
+            display: none;
+          }
+        }
+      }
+    }
+
+    .button-polygon{
+      grid-column: 1 / -1;
+      margin-top: 2.5rem;
+      justify-self: center;
+
+      @include laptop{
+        margin-top: 2rem;
+      }
+
+      @include tablet{
+        margin-top: 1.5rem;
+        justify-self: flex-start;
+      }
+    }
+  }
+
+  .system{
+
+    &__image{
+      grid-column: 1 / 5;
+      width: 28.95rem;
+      height: 28.95rem;
+      object-fit: cover;
+      object-position: center;
+
+      @include laptop{
+        width: 21.1rem;
+        height: 21.1rem;
+      }
+
+      @include tablet{
+        position: absolute;
+        left: 100%;
+        bottom: 0;
+        width: 11.45rem;
+        height: 11.45rem;
+        z-index: 0;
+      }
+
+      @include mobile{
+        grid-column: 1 / -1;
+        grid-row: 4 / 4;
+        position: relative;
+        left: 0;
+        width: 11.45rem;
+        height: 11.45rem;
+      }
+    }
+
+    &__content{
+      grid-column: 6 / -1;
+
+      @include tablet{
+        grid-column: 1 / -1;
+      }
+
+      &__paragraph{
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: baseline;
+        gap: 0 .5rem;
+
+        @include laptop{
+          margin-bottom: 1rem;
+        }
+
+        &__icon{
+          width: .7rem;
+          height: .8rem;
+
+          @include laptop{
+            width: .5rem;
+            height: .55rem;
+          }
+        }
+      }
+
+      &__description{
+        margin: 1.5rem 0 2rem 0;
+        max-width: 26.25rem;
+
+        @include laptop{
+          margin: 1rem 0 1.5rem 0;
+          max-width: 20.7rem;
+        }
+
+        @include mobile{
+          margin: .5rem 0 1rem 0;
+          max-width: 100%;
+        }
+      }
+    }
+  }
+
+  .team{
+
+    &__title{
+      grid-column: 2 / 12;
+      text-align: center;
+
+      @include laptop{
+        grid-column: 3 / 11;
+      }
+
+      @include tablet{
+        grid-column: 1 / -1;
+        max-width: 85%;
+        justify-self: center;
+      }
+
+      @include mobile{
+        max-width: 100%;
+      }
+    }
+
+    &__description{
+      grid-column: 5 / 9;
+      margin: 1.5rem 0 2.5rem 0;
+      text-align: center;
+
+      @include laptop{
+        margin: 1.5rem 0 2rem 0;
+        grid-column: 4 / 10;
+      }
+
+      @include tablet{
+        margin: 1.5rem 0 1.5rem 0;
+        grid-column: 1 / -1;
+        max-width: 85%;
+        justify-self: center;
+      }
+
+      @include mobile{
+        margin: .5rem 0 1.5rem 0;
+        max-width: 100%;
+      }
+    }
+
+    &__list{
+      grid-column: 1 / -1;
+      gap: 2.5rem .5rem;
+
+      @include laptop{
+        gap: 2rem .5rem;
+      }
+
+      @include tablet{
+        gap: 1.5rem .5rem;
+      }
+    }
+
+    &__item{
+      grid-column: span 3;
+      line-height: 0;
+
+      @include tablet{
+        grid-column: span 3 !important;
+      }
+
+      @include mobile{
+        grid-column: 1 / -1 !important;
+      }
+
+      @function column-position($i) {
+        $index: ($i - 1) % 12 + 1;
+
+        @if $index == 1 or $index == 4 or $index == 7 or $index == 10 {
+          @return "1 / 4";
+        } @else if $index == 2 or $index == 8 {
+          @return "4 / 7";
+        } @else if $index == 5 or $index == 11 {
+          @return "7 / 10";
+        } @else {
+          @return "10 / -1";
+        }
+      }
+
+      @for $i from 1 through 100 {
+        &:nth-child(#{$i}) {
+          grid-column: #{column-position($i)};
+        }
+      }
+
+      &__image{
+        width: 100%;
+        height: 25.4rem;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 10px;
+
+        @include laptop{
+          height: 18rem;
+        }
+
+        @include tablet{
+          height: 19.6rem;
+          border-radius: 5px;
+        }
+
+        @include mobile{
+          height: 18.5rem;
+        }
+      }
+
+      &__title{
+        margin: 1.5rem 0 1rem 0;
+
+        @include laptop{
+          margin: 1rem 0 .5rem 0;
+          font-size: 1.25rem;
+        }
+
+        @include tablet {
+          font-size: 1rem;
+        }
+
+        @include mobile {
+          font-size: .9rem;
+        }
+      }
+    }
+  }
+
+  .history{
+    position: relative;
+    padding: 2.5rem;
+    margin-top: .5rem;
+    border-radius: 10px;
+    background-color: $c-b;
+    min-height: 50.75rem;
+    height: 50.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem 0;
+
+    @include laptop{
+      padding: 1.5rem;
+      min-height: 38.4rem;
+      height: 38.4rem;
+      gap: 1rem 0;
+    }
+
+    @include tablet{
+      padding: 1rem;
+      min-height: 100%;
+      height: 100%;
+      gap: 2rem 0;
+      border-radius: 5px;
+    }
+
+    @include tablet{
+      padding: .5rem;
+      gap: 1.5rem 0;
+    }
+
+    &__icon{
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      width: .7rem;
+      height: .8rem;
+
+      @include laptop{
+        top: 1rem;
+        right: 1rem;
+        width: .5rem;
+        height: .55rem;
+      }
+
+      @include mobile{
+        display: none;
+      }
+    }
+
+    &__navigation{
+      position: absolute;
+      top: 50%;
+      right: 2.5rem;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 0 .5rem;
+      z-index: 2;
+
+      &_pc{
+
+        @include tablet {
+          display: none;
+        }
+      }
+
+      &_mobile{
+
+        @include tablet{
+          display: flex;
+          position: relative;
+          top: 0;
+          right: 0;
+          transform: initial;
+        }
+      }
+    }
+
+    &__inner{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2.5rem 0;
+      height: 100%;
+
+      @include mobile{
+        gap: 1.5rem 0;
+      }
+    }
+
+    #history-content{
+
+      .swiper{
+        height: 100%;
+      }
+
+      .swiper-slide{
+        opacity: 0 !important;
+      }
+
+      .swiper-slide-active{
+        opacity: 1 !important;
+      }
+    }
+
+    .swiper{
+      width: 100%;
+      height: 100%;
+    }
+
+    &__item{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      max-width: 60.5rem;
+      height: 100%;
+
+      @include tablet{
+        gap: 2rem 0;
+        justify-content: flex-start;
+      }
+
+      &__title{
+        margin-bottom: 1.5rem;
+        color: $c-w;
+
+        @include mobile{
+          margin-bottom: .5rem;
+        }
+      }
+
+      &__description{
+        max-width: 35.5rem;
+        color: $c-w;
+
+        @include tablet{
+          max-width: 26rem;
+        }
+
+        ul{
+          padding-left: 1rem;
+          margin: 0;
+        }
+      }
+
+      &__date{
+        margin-bottom: 1rem;
+        color: $c-w;
+
+        &-description{
+          color: $c-w;
+          max-width: 25.5rem;
+        }
+      }
+    }
+
+    &__ruler{
+
+      .swiper{
+        overflow: initial !important;
+
+        .is-active{
+
+          .history__ruler__date{
+            opacity: 1;
+            transition: .5s;
+          }
+        }
+      }
+
+      &__date{
+        margin-bottom: .5rem;
+        margin-left: -1rem;
+        color: $c-w;
+        opacity: .2;
+        width: fit-content;
+        transition: .5s;
+
+        @include tablet{
+          margin-left: -.5rem;
+        }
+
+        @include mobile{
+          margin-left: 0;
+        }
+      }
+
+      &__item{
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .clients{
+    padding-bottom: 10rem;
+
+    @include laptop{
+      padding-bottom: 7.5rem;
+    }
+
+    @include tablet{
+      padding-bottom: 5rem;
+    }
+
+    @include mobile{
+      padding-bottom: 4rem;
+    }
+
+    &__paragraph{
+      grid-column: 1 / 7;
+      display: flex;
+      align-items: baseline;
+      gap: 0 .5rem;
+
+      @include tablet{
+        grid-column: 1 / -1;
+      }
+
+      &__icon{
+        width: .7rem;
+        height: .8rem;
+
+        @include laptop{
+          width: .5rem;
+          height: .55rem;
+        }
+      }
+    }
+
+    &__information{
+      grid-column: 7 / -1;
+
+      @include tablet{
+        grid-column: 1 / -1;
+        margin-top: 1rem;
+      }
+
+      &__description{
+        margin-top: 1.5rem;
+        max-width: 28.5rem;
+
+        @include laptop{
+          max-width: 22rem;
+        }
+      }
+    }
+
+    &__inner{
+      grid-column: 1 / -1;
+      margin-top: 2.5rem;
+      border-top: 1px solid rgba(67, 66, 68, 0.2);
+
+      @include laptop{
+        margin-top: 2rem;
+      }
+
+      @include tablet{
+        margin-top: 1.5rem;
+      }
+    }
+
+    &__image{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+
+      &__list{
+        grid-column: 1 / 3;
+        margin-top: 2.5rem;
+        position: relative;
+        width: 100%;
+        height: 14.6rem;
+
+        @include laptop{
+          margin-top: 1.5rem;
+          width: 100%;
+          height: 10.1rem;
+        }
+
+        @include tablet{
+          display: none;
+        }
+      }
+    }
+
+    &__item{
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 0 .5rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid rgba(67, 66, 68, 0.2);
+      background-color: transparent;
+      transition: .5s;
+
+      @include laptop{
+        padding: 1.5rem 0;
+      }
+
+      @include tablet{
+        padding: 1rem 0;
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      &:hover{
+        border-bottom: 1px solid rgba(67, 66, 68, 1);
+        transition: .5s;
+
+        .clients__item__number{
+          background-color: $c-b;
+          border: 1px solid $c-b;
+          color: $c-w;
+          transition: .5s;
+        }
+      }
+
+      &__number{
+        grid-column: 1 / 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.8rem;
+        height: 2.8rem;
+        border: 1px solid #20376D33;
+        border-radius: 5px;
+        transition: .5s;
+
+        @include laptop{
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+
+      &__title{
+        grid-column: 3 / -1;
+        align-self: center;
+
+        @include laptop {
+          font-size: 1.25rem;
+        }
+
+        @include tablet{
+          grid-column: 4 / -1;
+          font-size: 1rem;
+        }
+
+        @include mobile {
+          font-size: .9rem;
+          grid-column: 2 / -1;
+          justify-self: flex-end;
+        }
+      }
+
+      &__list{
+        grid-column: 5 / -1;
+
+        @include tablet{
+          grid-column: 1 / -1;
+        }
+      }
+    }
+  }
+}

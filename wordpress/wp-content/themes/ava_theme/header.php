@@ -28,7 +28,7 @@
         <a href="<?= home_url(); ?>" class="header__logo">
             <img src="/wp-content/uploads/2025/07/114.svg" alt="logo">
         </a>
-        <a href="" class="header__products">
+        <a href="/<?= pll_current_language(); ?>/products/#catalog" class="header__products">
             <span class="header__products__title p2">Продукция</span>
             <svg class="header__products__icon" width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="41" height="41" rx="5" fill="#20376D"/>

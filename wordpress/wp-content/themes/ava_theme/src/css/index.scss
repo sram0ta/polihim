@@ -441,6 +441,23 @@ h5, .h5{
 
   &:hover{
 
+    &._white{
+
+      .navigation__button__border{
+        transform: scale(.85);
+        transition: .5s;
+
+        svg{
+
+          path{
+            stroke: #F9F9F9;
+            stroke-opacity: 1;
+            transition: .5s;
+          }
+        }
+      }
+    }
+
     .navigation__button__border{
       transform: scale(.85);
       transition: .5s;
@@ -583,4 +600,5 @@ h5, .h5{
 @import "pages/_products";
 @import "pages/_production";
 @import "pages/_laboratory";
+@import "pages/_about";
 @import "inc/_footer";
