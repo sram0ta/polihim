@@ -228,6 +228,24 @@ function ava_polylang_strings()
         'Смотреть все новости',
         'Главная',
     );
+
+    pll_register_string(
+        'search-title',
+        'Результаты поиска',
+        'Поиск',
+    );
+
+    pll_register_string(
+        'search-counter',
+        'Найдено:',
+        'Поиск',
+    );
+
+    pll_register_string(
+        'search-not-found',
+        'Ничего не найдено по запросу:',
+        'Поиск',
+    );
 }
 
 require get_template_directory() . '/ajax-infocenter.php';

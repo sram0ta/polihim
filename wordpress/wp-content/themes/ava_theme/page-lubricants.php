@@ -140,7 +140,9 @@ get_header();
                                 </div>
                             </div>
                             <div class="lubricants__content__item__link-list">
-                                <a href="<?php the_permalink(); ?>" class="lubricants__content__item__link p1"><?= pll__('Подробнее'); ?></a>
+                                <?php if (have_rows('repeater_description')) : ?>
+                                    <a href="<?php the_permalink(); ?>" class="lubricants__content__item__link p1"><?= pll__('Подробнее'); ?></a>
+                                <?php endif; ?>
                                 <?php if (get_field('pdf_file')) : ?>
                                     <a href="<?php the_field('pdf_file'); ?>" class="lubricants__content__item__link p1" download><?= pll__('Скачать PDF'); ?></a>
                                 <?php endif; ?>

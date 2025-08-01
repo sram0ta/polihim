@@ -76,8 +76,8 @@
             </div>
         </div>
         <div class="header__search">
-            <form action="#" class="header__search__form">
-                <input type="text" class="header__search__form__input p2" placeholder="Поиск">
+            <form role="search" method="get" class="header__search__form" action="<?php echo esc_url(home_url('/')); ?>">
+                <input type="text" class="header__search__form__input p2" placeholder="Поиск" value="<?= get_search_query(); ?>" name="s"/>
                 <button class="header__search__form__button" type="submit">
                     <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g opacity="0.4">
@@ -93,7 +93,7 @@
                 <span class="button-long__title p2"><?= pll__('Меню'); ?></span>
             </span>
         </button>
-        <a href="#" class="button-long _orange">
+        <a href="/<?= pll_current_language(); ?>/contacts/" class="button-long _orange">
             <span class="button-long__inner">
                 <span class="button-long__title p2"><?= pll__('Связаться с нами'); ?></span>
                 <span class="button-long__title p2"><?= pll__('Связаться с нами'); ?></span>
