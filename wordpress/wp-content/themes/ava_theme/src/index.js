@@ -2,35 +2,95 @@ window.addEventListener("load", () => {
     ScrollTrigger.refresh();
 });
 
+
+
 window.addEventListener('DOMContentLoaded', function() {
     gsap.registerPlugin(ScrollTrigger);
 
     openLanguage();
+    openMenu();
     galleryAdvantages();
     galleryBenefits();
     galleryHistory();
     achievementLottie();
     scaleAnimation();
     qualityAnimation();
-    heroAnimation();
+    // heroAnimation();
     ourClientsItemsAnimation();
     advantagesAnimation();
-    hashUrl();
+    productsLottie();
+
+    const preloader = document.querySelector('.preloader');
+    const numberEl = document.querySelector('.preloader__number');
+
+    let current = 1;
+    const max = 99;
+    const duration = 1500;
+    const interval = Math.floor(duration / (max - current));
+
+    const counterInterval = setInterval(() => {
+        current++;
+        if (current > max) {
+            clearInterval(counterInterval);
+            return;
+        }
+        numberEl.textContent = current.toString().padStart(2, '0');
+    }, interval);
+
+    preloader.classList.add('active');
+
+    setTimeout(() => {
+        preloader.classList.remove('active');
+        preloader.classList.add('done');
+    }, duration);
 });
 
-const wp_ajax = '/wp-admin/admin-ajax.php';
-
 const openLanguage = () => {
-    let langToggle = document.querySelector('.header__lang__activity')
-    let langAll = document.querySelector('.header__lang__all')
+    let langToggle = document.querySelectorAll('.header__lang__activity');
+    let langAll = document.querySelectorAll('.header__lang__all');
 
-    if (langToggle && langAll) {
-        langToggle.addEventListener('click', () => {
-            langToggle.classList.toggle('active')
-            langAll.classList.toggle('active')
-        })
+    if (langToggle.length && langAll.length) {
+        langToggle.forEach((toggle, index) => {
+            toggle.addEventListener('click', () => {
+                toggle.classList.toggle('active');
+                if (langAll[index]) {
+                    langAll[index].classList.toggle('active');
+                }
+            });
+        });
     }
-}
+};
+
+const openMenu = () => {
+    if (window.innerWidth > 1024) return;
+
+    const button = document.getElementById('menuToggleButton');
+    const titles = button.querySelectorAll('.button-long__title');
+    const menu = document.getElementById('menu');
+    const body = document.body;
+
+    if (!button || !menu) return;
+
+    const labels = {
+        ru: { open: 'Закрыть', closed: 'Меню' },
+        en: { open: 'Close', closed: 'Menu' },
+    };
+
+    const shortLang = (document.documentElement.lang || 'en').slice(0, 2);
+    const label = labels[shortLang] || labels['en'];
+
+    button.addEventListener('click', function () {
+        const isOpen = body.classList.toggle('fixed');
+        menu.classList.toggle('active');
+
+        titles.forEach(title => {
+            title.textContent = isOpen ? label.open : label.closed;
+        });
+    });
+};
+
+
+
 
 const galleryAdvantages = () => {
     if (document.querySelector('#advantages-gallery')) {
@@ -142,6 +202,8 @@ const galleryHistory = () => {
 
 
 const scaleAnimation = () => {
+    if (window.innerWidth < 1024) return;
+
     if (document.querySelector('.scale__list')){
         gsap.to('.scale__list', {
             scrollTrigger: {
@@ -161,6 +223,23 @@ const achievementLottie = () => {
 
     items.forEach(item => {
         const iconContainer = item.querySelector(".achievement__content__animate");
+
+        lottie.loadAnimation({
+            container: iconContainer,
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            path: iconContainer.dataset.json,
+        });
+    });
+}
+
+const productsLottie = () => {
+    const items = document.querySelectorAll(".products__item");
+    if (!items.length) return;
+
+    items.forEach(item => {
+        const iconContainer = item.querySelector(".products__item__image");
 
         lottie.loadAnimation({
             container: iconContainer,
@@ -198,7 +277,7 @@ const qualityAnimation = () => {
         scrollTrigger: {
             trigger: ".quality",
             start: "bottom bottom",
-            end: "+=4000",
+            end: "+=2000",
             scrub: true,
             pin: true,
             pinSpacing: true,
@@ -226,7 +305,7 @@ const qualityAnimation = () => {
 const heroAnimation = () => {
     if (document.querySelector('.upper-information__image')) {
         gsap.to(".upper-information__image", {
-            backgroundPositionY: "-100px",
+            backgroundPositionY: "-40px",
             ease: "linear",
             scrollTrigger: {
                 trigger: ".upper-information__image",
@@ -241,7 +320,7 @@ const heroAnimation = () => {
 const ourClientsItemsAnimation = () => {
     const items = document.querySelectorAll('.our-clients__content__item');
 
-    if (!items.length || window.innerWidth < 1024) return;
+    if (!items.length || window.innerWidth < 576) return;
 
     items.forEach((item, index) => {
         gsap.to(item, {
@@ -272,20 +351,3 @@ const advantagesAnimation = () => {
         });
     });
 };
-
-const hashUrl = () => {
-    const hash = window.location.hash;
-
-    if (!hash) return;
-
-    const scrollToHash = () => {
-        const target = document.querySelector(hash);
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-            setTimeout(scrollToHash, 100);
-        }
-    };
-
-    setTimeout(scrollToHash, 300);
-}

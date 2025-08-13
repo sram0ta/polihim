@@ -5,16 +5,27 @@
     overflow: hidden;
     margin-right: -2.5rem;
     padding-right: 2.5rem;
+    padding-top: 10rem;
+    margin-top: -10rem;
+    padding-bottom: 10rem;
+    margin-bottom: -10rem;
 
     @include laptop{
       margin-right: -1.5rem;
       padding-right: 1.5rem;
+      padding-top: 7.5rem;
+      margin-top: -7.5rem;
+      padding-bottom: 7.5rem;
+      margin-bottom: -7.5rem;
     }
 
     @include tablet{
       margin-right: -1rem;
       padding-right: 1rem;
       padding-bottom: 25rem;
+      padding-top: 0;
+      margin-top: 0;
+      margin-bottom: 0;
     }
 
     @include mobile{
@@ -102,8 +113,8 @@
     &__image{
       position: absolute;
       right: -14.5rem;
-      top: -5rem;
-      width: 61rem;
+      top: 2rem;
+      width: 56rem;
       height: auto;
       object-fit: cover;
       object-position: center;
@@ -111,13 +122,14 @@
 
       @include laptop{
         right: -11rem;
-        top: -3rem;
+        top: 3rem;
         width: 43rem;
       }
 
       @include tablet{
-        top: 17rem;
-        width: 39rem;
+        right: 0;
+        top: 13rem;
+        width: 32rem;
       }
 
       @include mobile{
@@ -208,6 +220,10 @@
           margin-top: -9rem;
 
           @include tablet{
+            margin-top: -5rem;
+          }
+
+          @include mobile{
             margin-top: 0;
           }
         }

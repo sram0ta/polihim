@@ -59,6 +59,14 @@ get_header();
                             <rect y="4" width="1" height="7" transform="rotate(-90 0 4)" fill="#20376D"/>
                         </svg>
                     </div>
+                    <div class="products-filter__title products-filter__title-button p1" data-button="industry">
+                        <div class="products-filter__title-button__tablet"><?= pll__('Фильтрация по отрасли'); ?></div>
+                        <div class="products-filter__title-button__mobile"><?= pll__('По отрасли'); ?></div>
+                        <svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" width="1" height="7" fill="#20376D"/>
+                            <rect y="4" width="1" height="7" transform="rotate(-90 0 4)" fill="#20376D"/>
+                        </svg>
+                    </div>
                 </div>
                 <div class="products-filter__item" data-block="compound">
                     <div class="products-filter__title p1"><?= pll__('Фильтрация по составу'); ?></div>
@@ -98,15 +106,49 @@ get_header();
                         ?>
                     </div>
                 </div>
+                <div class="products-filter__item" data-block="industry">
+                    <div class="products-filter__title p1"><?= pll__('Фильтрация по отрасли'); ?></div>
+                    <div class="products-filter__inner">
+                        <?php
+                        $terms = get_terms([
+                            'taxonomy'   => 'industry',
+                            'hide_empty' => true,
+                        ]);
+
+                        if (!empty($terms) && !is_wp_error($terms)) {
+                            foreach ($terms as $term) {
+                                ?>
+                                <button class="products-filter__button p2" data-type="<?= esc_attr($term->slug); ?>"><?= esc_html($term->name) ?></button>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
                 <button class="products-filter__clear p2" style="display: none;"><?= pll__('Сбросить всё'); ?></button>
             </div>
             <div class="lubricants__content">
                 <?php
+                $current_lang = function_exists('pll_current_language') ? pll_current_language() : '';
+
+                add_filter('posts_clauses', function($clauses) {
+                    global $wpdb;
+                    // Добавляем коллацию для сортировки по заголовкам
+                    $clauses['orderby'] = str_replace(
+                        "{$wpdb->posts}.post_title",
+                        "{$wpdb->posts}.post_title COLLATE utf8mb4_unicode_ci",
+                        $clauses['orderby']
+                    );
+                    return $clauses;
+                });
+
                 $args = [
                     'post_type'      => 'lubricants',
                     'posts_per_page' => -1,
                     'post_status'    => 'publish',
-                    'lang'           => function_exists('pll_current_language') ? pll_current_language() : '',
+                    'lang'           => $current_lang,
+                    'orderby'        => 'title',
+                    'order'          => 'ASC',
                 ];
 
                 $query = new WP_Query($args);
@@ -125,34 +167,34 @@ get_header();
                                     if ($compound_terms) {
                                         foreach ($compound_terms as $term) {
                                             ?>
-                                                <div class="lubricants__content__item__tag p2"><?= esc_html($term->name); ?></div>
+                                            <div class="lubricants__content__item__tag p2"><?= esc_html($term->name); ?></div>
                                             <?php
                                         }
                                     }
                                     if ($purpose_terms) {
                                         foreach ($purpose_terms as $term) {
                                             ?>
-                                                <div class="lubricants__content__item__tag p2"><?= esc_html($term->name); ?></div>
+                                            <div class="lubricants__content__item__tag p2"><?= esc_html($term->name); ?></div>
                                             <?php
                                         }
                                     }
                                     ?>
                                 </div>
                             </div>
-                            <div class="lubricants__content__item__link-list">
-                                <?php if (have_rows('repeater_description')) : ?>
-                                    <a href="<?php the_permalink(); ?>" class="lubricants__content__item__link p1"><?= pll__('Подробнее'); ?></a>
-                                <?php endif; ?>
-                                <?php if (get_field('pdf_file')) : ?>
-                                    <a href="<?php the_field('pdf_file'); ?>" class="lubricants__content__item__link p1" download><?= pll__('Скачать PDF'); ?></a>
-                                <?php endif; ?>
-                            </div>
+                            <?php if (have_rows('repeater_description') || get_field('pdf_file')): ?>
+                                <div class="lubricants__content__item__link-list">
+                                    <?php if (have_rows('repeater_description')) : ?>
+                                        <a href="<?php the_permalink(); ?>" class="lubricants__content__item__link p1"><?= pll__('Подробнее'); ?></a>
+                                    <?php endif; ?>
+                                    <?php if (get_field('pdf_file')) : ?>
+                                        <a href="<?php the_field('pdf_file'); ?>" class="lubricants__content__item__link p1" download><?= pll__('Скачать PDF'); ?></a>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     <?php
                     endwhile;
                     wp_reset_postdata();
-                else :
-                    echo '<p class="lubricants__content__nothing p1">' . pll__('Ничего не найдено.') . '</p>';
                 endif;
                 ?>
             </div>

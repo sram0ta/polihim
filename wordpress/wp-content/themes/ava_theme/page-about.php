@@ -44,7 +44,7 @@ get_header();
                     <p class="upper-information__number-description p1"><?php the_field('page-number_description'); ?></p>
                 </div>
                 <div class="upper-information__link">
-                    <a href="/<?= pll_current_language(); ?>/products/#catalog" class="button-polygon">
+                    <a href="/<?= pll_current_language(); ?>/products/" class="button-polygon">
                         <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                         <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                             <span class="button-polygon__icon__inner">
@@ -290,7 +290,7 @@ get_header();
                         endwhile;
                     ?>
                 </div>
-                <a href="/<?= pll_current_language(); ?>/products/#catalog" class="button-polygon">
+                <a href="/<?= pll_current_language(); ?>/products/" class="button-polygon">
                     <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                     <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                         <span class="button-polygon__icon__inner">
@@ -315,7 +315,7 @@ get_header();
                     </div>
                     <div class="system__content__title h2"><?php the_field('system_title'); ?></div>
                     <p class="system__content__description p1"><?php the_field('system_description'); ?></p>
-                    <a href="/<?= pll_current_language(); ?>/products/#catalog" class="button-polygon">
+                    <a href="/<?= pll_current_language(); ?>/products/" class="button-polygon">
                         <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                         <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                             <span class="button-polygon__icon__inner">
@@ -384,21 +384,24 @@ get_header();
                     <p class="clients__information__description p1"><?php the_field('clients_description'); ?></p>
                 </div>
                 <div class="clients__inner grid-12">
-                    <div class="clients__image__list">
-                        <?php
-                        $my_posts = get_posts( array(
-                            'numberposts' => -1,
-                            'post_type'   => 'clients',
-                            'suppress_filters' => true,
-                        ) );
-
-                        foreach( $my_posts as $post ){
-                            setup_postdata( $post );
-                            ?>
-                                <img src="<?= get_field('image')['url']; ?>" alt="<?= get_field('image')['alt']; ?>" class="clients__image" loading="lazy" data-client="<?php the_ID(); ?>">
+                    <div class="clients__wrapper">
+                        <div class="clients__image__list">
                             <?php
-                        } wp_reset_postdata();
-                        ?>
+                            $my_posts = get_posts( array(
+                                'numberposts' => 5,
+                                'post_type'   => 'clients',
+                                'post_status'    => 'publish',
+                                'suppress_filters' => true,
+                            ) );
+
+                            foreach( $my_posts as $post ){
+                                setup_postdata( $post );
+                                ?>
+                                    <img src="<?= get_field('image')['url']; ?>" alt="<?= get_field('image')['alt']; ?>" class="clients__image" loading="lazy" data-client="<?php the_ID(); ?>">
+                                <?php
+                            } wp_reset_postdata();
+                            ?>
+                        </div>
                     </div>
                     <div class="clients__item__list">
                         <?php
@@ -415,6 +418,7 @@ get_header();
                         } wp_reset_postdata();
                         ?>
                     </div>
+                    <button class="clients__load-more p1"><?= pll__('Показать ещё'); ?></button>
                 </div>
             </div>
         </div>

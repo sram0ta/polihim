@@ -40,10 +40,23 @@ get_header();
                 <div class="upper-information__title h1"><?php the_field('page-title'); ?></div>
                 <p class="upper-information__description p1"><?php the_field('page-description'); ?></p>
                 <div class="upper-information__link">
-                    <a href="#catalog" class="button-polygon">
-                        <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
+                    <a href="/<?= pll_current_language() ?>/products/lubricants" class="button-polygon">
+                        <span class="button-polygon__title p1"><?= pll__('Каталог смазок и СОЖ'); ?></span>
                         <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
-                            <span class="button-polygon__icon__inner" style="transform: rotate(90deg);">
+                            <span class="button-polygon__icon__inner">
+                                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 6L14 6M14 6L10 2M14 6L10 10" stroke="#E9E9E9"/>
+                                </svg>
+                                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 6L14 6M14 6L10 2M14 6L10 10" stroke="#E9E9E9"/>
+                                </svg>
+                            </span>
+                        </span>
+                    </a>
+                    <a href="/<?= pll_current_language() ?>/products/tare" class="button-polygon">
+                        <span class="button-polygon__title p1"><?= pll__('Перейти в каталог Тары'); ?></span>
+                        <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
+                            <span class="button-polygon__icon__inner">
                                 <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1 6L14 6M14 6L10 2M14 6L10 10" stroke="#E9E9E9"/>
                                 </svg>
@@ -66,7 +79,7 @@ get_header();
                         <?php
                             while ( have_rows('repeater_catalog') ) : the_row();
                             ?>
-                                <a href="<?php the_sub_field('file'); ?>" class="catalog__item" download>
+                                <a href="<?php the_sub_field('file'); ?>" class="catalog__item" target="_blank">
                                     <h5 class="catalog__item__title h5"><?php the_sub_field('title'); ?></h5>
                                     <div class="catalog__item__document p1"><?= pll__('Скачать PDF'); ?></div>
                                 </a>
@@ -88,14 +101,14 @@ get_header();
                     </div>
                     <div class="catalog-product__content__title-lubricants h2"><?php the_field('lubricants_title_first'); ?></div>
                     <p class="catalog-product__content__description p1"><?php the_field('lubricants_description'); ?></p>
-                    <a href="<?= pll_current_language() ?>/products/lubricants" class="button-long _blue">
+                    <a href="/<?= pll_current_language() ?>/products/lubricants" class="button-long _blue">
                         <span class="button-long__inner">
                             <span class="button-long__title p2"><?= pll__('Каталог смазок и СОЖ'); ?></span>
                             <span class="button-long__title p2"><?= pll__('Каталог смазок и СОЖ'); ?></span>
                         </span>
                     </a>
                     <div class="catalog-product__content__title-tare h5"><?php the_field('lubricants_title_second'); ?></div>
-                    <a href="<?= pll_current_language() ?>/products/tare" class="catalog-product__content__link p1"><?= pll__('Перейти в каталог Тары'); ?></a>
+                    <a href="/<?= pll_current_language() ?>/products/tare" class="catalog-product__content__link p1"><?= pll__('Перейти в каталог Тары'); ?></a>
                 </div>
             </div>
             <?= get_template_part('template-part/section-delivery'); ?>

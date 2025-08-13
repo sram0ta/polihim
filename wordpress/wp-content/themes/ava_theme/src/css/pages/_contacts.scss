@@ -51,7 +51,7 @@
         border-radius: 5px;
       }
 
-      @include tablet{
+      @include mobile{
         height: 12rem;
       }
     }

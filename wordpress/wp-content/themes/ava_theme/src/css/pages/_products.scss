@@ -139,10 +139,6 @@
     }
 
     @include tablet{
-      padding-bottom: 11rem;
-    }
-
-    @include mobile{
       padding-bottom: 0;
     }
   }
@@ -249,16 +245,16 @@
     }
 
     &:hover{
+      border-bottom: 1px solid rgba(32, 55, 109, .2);
 
       .catalog__item__title, .catalog__item__document{
-        opacity: 1;
+        color: $c-b;
         transition: .5s;
       }
 
     }
 
     &__title{
-      opacity: .4;
       transition: .5s;
 
       @include laptop {
@@ -276,8 +272,8 @@
     }
 
     &__document{
-      opacity: .4;
-      color: $c-b;
+      //opacity: .4;
+      //color: $c-b;
       text-decoration: underline;
       transition: .5s;
 

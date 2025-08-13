@@ -217,3 +217,270 @@
 .wpcf7-not-valid-tip{
   display: none !important;
 }
+
+.footer{
+  margin: .5rem;
+  padding-bottom: 1rem;
+  width: calc(100% - 1rem);
+  background-color: $c-b;
+  box-sizing: border-box;
+
+  &__menu{
+    grid-column: 1 / 4;
+
+    @include mobile{
+      grid-column: 1 / -1;
+    }
+
+    &__logo{
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem 0;
+
+      @include laptop{
+        margin-bottom: 2rem;
+        gap: 1rem 0;
+      }
+
+      @include tablet{
+        margin-bottom: 1rem;
+      }
+
+      &__image{
+        transition: .5s;
+
+        &:hover{
+          opacity: .6;
+          transition: .5s;
+        }
+
+        img{
+          width: 19.05rem;
+          height: 6.2rem;
+          object-fit: cover;
+          object-position: center;
+
+          @include laptop{
+            width: 15.7rem;
+            height: 5.1rem;
+          }
+
+          @include tablet{
+            width: 11.45rem;
+            height: 3.7rem;
+          }
+
+          @include tablet{
+            width: 7.7rem;
+            height: 2.5rem;
+          }
+        }
+      }
+
+      &__description{
+        color: $c-w;
+
+        @include mobile{
+          max-width: 70%;
+        }
+      }
+    }
+  }
+
+  .footer__menu__item{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem 0;
+
+    @include mobile{
+      gap: .5rem 0;
+    }
+
+    &__title{
+      color: $c-w;
+      opacity: .6;
+    }
+
+    &__inner{
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem 0;
+
+      @include laptop{
+        gap: 1rem 0;
+      }
+
+      @include mobile{
+        gap: .75rem 0;
+      }
+    }
+
+    &__link{
+      width: fit-content;
+      color: $c-w;
+      transition: .5s;
+
+      &:hover{
+        opacity: .4;
+        transition: .5s;
+      }
+    }
+
+    &__description{
+      color: $c-w;
+
+      a{
+        color: $c-b;
+        text-decoration: underline;
+        transition: .5s;
+
+        &:hover{
+          opacity: .5;
+          transition: .5s;
+        }
+      }
+    }
+  }
+
+  &__information{
+    grid-column: 7 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem 0;
+
+    @include tablet{
+      grid-column: 4 / -1;
+      margin-top: 10.2rem;
+    }
+
+    @include mobile{
+      grid-column: 1 / -1;
+      margin-top: 1.5rem;
+      gap: 1.5rem 0;
+    }
+
+    &__inner{
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0 .5rem;
+
+      @include tablet{
+        gap: 1.5rem .5rem;
+      }
+
+      .footer__menu__item{
+        grid-column: span 2;
+        width: 105%;
+
+        @include tablet{
+          grid-column: 1 / -1;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__under{
+    margin-top: 3rem;
+
+    @include mobile{
+      margin-top: 2rem;
+    }
+
+    &__images{
+      grid-column: 1 / 5;
+      display: flex;
+      align-items: center;
+      gap: 0 1.5rem;
+
+      @include laptop{
+        gap: 0 1rem;
+      }
+
+      @include tablet{
+        grid-column: 1 / 4;
+        gap: 0 .5rem;
+      }
+
+      @include mobile{
+        grid-column: 1 / -1;
+      }
+
+      &__iso{
+        width: 3rem;
+        height: 3rem;
+
+        @include mobile{
+          width: 2.45rem;
+          height: 2.45rem;
+        }
+      }
+
+      &__sk{
+        width: 13.25rem;
+        height: 3rem;
+
+        @include mobile{
+          width: 10.85rem;
+          height: 2.45rem;
+        }
+      }
+    }
+
+    &__privacy{
+      grid-column: 7 / 10;
+      align-self: flex-end;
+      width: fit-content;
+      color: $c-w;
+      text-decoration: underline;
+      opacity: .7;
+      transition: .5s;
+
+      @include tablet{
+        grid-column: 4 / -1;
+        grid-row: 1 / -1;
+        align-self: flex-start;
+      }
+
+      @include mobile{
+        grid-column: 1 / -1;
+        grid-row: initial;
+        margin-top: 1.5rem;
+      }
+
+      &:hover{
+        opacity: .4;
+        transition: .5s;
+      }
+    }
+
+    .ava-digital{
+      grid-column: 11 / -1;
+      width: fit-content;
+      justify-self: flex-end;
+      align-self: flex-end;
+      color: $c-w;
+      text-decoration: underline;
+      opacity: .7;
+      transition: .5s;
+
+      @include tablet{
+        grid-column: 4 / -1;
+        grid-row: 1 / -1;
+        justify-self: flex-start;
+      }
+
+      @include mobile{
+        grid-column: 1 / -1;
+        grid-row: initial;
+        margin-top: .5rem ;
+      }
+
+      &:hover{
+        opacity: .4;
+        transition: .5s;
+      }
+    }
+  }
+}

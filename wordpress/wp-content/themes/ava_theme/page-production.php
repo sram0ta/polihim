@@ -40,7 +40,7 @@ get_header();
                 <div class="upper-information__title h1"><?php the_field('page-title'); ?></div>
                 <p class="upper-information__description p1"><?php the_field('page-description'); ?></p>
                 <div class="upper-information__link">
-                    <a href="/<?= pll_current_language(); ?>/products/#catalog" class="button-polygon">
+                    <a href="/<?= pll_current_language(); ?>/products/" class="button-polygon">
                         <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                         <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                             <span class="button-polygon__icon__inner">
@@ -107,7 +107,7 @@ get_header();
                 <div class="contract__information grid-12">
                     <div class="contract__information__title h2"><?php the_field('contract_title'); ?></div>
                     <p class="contract__information__description p1"><?php the_field('contract_description'); ?></p>
-                    <a href="/<?= pll_current_language(); ?>/products/#catalog" class="contract__information__link button-polygon">
+                    <a href="/<?= pll_current_language(); ?>/products/" class="contract__information__link button-polygon">
                         <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                         <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                             <span class="button-polygon__icon__inner">
@@ -122,8 +122,8 @@ get_header();
                     </a>
                 </div>
                 <div class="contract__line">
-                    <img src="<?= get_field('contract_image')['url']; ?>" alt="<?= get_field('contract_image')['alt']; ?>" class="contract__line__item" loading="lazy">
-                    <img src="<?= get_field('contract_image')['url']; ?>" alt="<?= get_field('contract_image')['alt']; ?>" class="contract__line__item" loading="lazy">
+                    <img src="<?= get_field('contract_image')['url']; ?>" alt="<?= get_field('contract_image')['alt']; ?>" class="contract__line__item">
+                    <img src="<?= get_field('contract_image')['url']; ?>" alt="<?= get_field('contract_image')['alt']; ?>" class="contract__line__item">
                 </div>
             </div>
             <div class="possibilities grid-12">

@@ -14,15 +14,26 @@
   .hero{
 
     &__paragraph{
-      grid-column: 1 / 4;
+      grid-column: 1 / 5;
       display: flex;
       gap: 0 .5rem;
+
+      @include tablet{
+        grid-column: 1 / -1;
+        margin-bottom: 1rem;
+      }
 
       &__icon{
         margin-top: .5rem;
         width: .7rem;
         height: .8rem;
         flex-shrink: 0;
+
+        @include laptop{
+          margin-top: .25rem;
+          width: .5rem;
+          height: .55rem;
+        }
       }
 
       &__inner{
@@ -36,10 +47,28 @@
       grid-column: 5 / -1;
       padding-bottom: 2.5rem;
 
+      @include laptop{
+        padding-bottom: 1.5rem;
+      }
+
+      @include tablet{
+        grid-column: 1 / -1;
+        padding-bottom: 1rem;
+      }
+
+      @include tablet{
+        padding-bottom: .5rem;
+      }
+
       &__description{
         margin: 1.5rem 0 2rem 0;
         max-width: 28.25rem;
         opacity: .7;
+
+        @include tablet{
+          margin: 1rem 0 1.5rem 0;
+          max-width: 22.9rem;
+        }
       }
     }
   }
@@ -48,9 +77,26 @@
     margin-top: .5rem;
     width: 100%;
     height: 47.5rem;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    padding: 0;
+
+    @include laptop{
+      height: 33.65rem;
+    }
+
+    @include tablet{
+      height: 18.75rem;
+    }
+
+    @include mobile{
+      height: 8.5rem;
+    }
+
+    video{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
   }
 
   .container-main__inner{
@@ -77,6 +123,16 @@
     &__paragraph{
       grid-column: 1 / 4;
 
+      @include tablet{
+        grid-row: 4 / 4;
+        margin-top: 2.5rem;
+      }
+
+      @include mobile{
+        grid-column: 1 / -1;
+        margin-top: 1.5rem;
+      }
+
       &__image{
         margin-bottom: 1.5rem;
         width: 100%;
@@ -86,6 +142,20 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+
+        @include laptop{
+          height: 13.5rem;
+        }
+
+        @include tablet{
+          height: 15.6rem;
+        }
+
+        @include mobile{
+          margin-bottom: 1rem;
+          height: 14rem;
+          border-radius: 5px;
+        }
       }
 
       &__title{
@@ -100,10 +170,19 @@
     &__information{
       grid-column: 7 / -1;
 
+      @include tablet{
+        grid-column: 1 / -1;
+      }
+
       &__description{
         margin: 1.5rem 0 2rem 0;
         max-width: 31rem;
         opacity: .7;
+
+        @include laptop{
+          margin: 1rem 0 1.5rem 0;
+          max-width: 23.2rem;
+        }
       }
     }
   }
@@ -153,6 +232,7 @@
 
         @include mobile{
           grid-column: 1 / -1;
+          margin-top: .5rem;
         }
       }
 
@@ -290,6 +370,14 @@
 
   .products{
 
+    @include tablet{
+      padding-bottom: 5rem;
+    }
+
+    @include mobile{
+      padding-bottom: 4rem;
+    }
+
     &__image{
       grid-column: 1 / 7;
       margin-left: -2.5rem;
@@ -297,16 +385,47 @@
       height: 65rem;
       object-fit: cover;
       object-position: center;
+
+      @include laptop{
+        margin-left: -1.5rem;
+        width: calc(100% + 1.5rem);
+        height: 43.75rem;
+      }
+
+      @include tablet{
+        display: none;
+      }
     }
 
     &__inner{
       grid-column: 7 / -1;
+
+      @include tablet{
+        grid-column: 1 / -1;
+      }
+    }
+
+    &__title{
+
+      @include tablet{
+        max-width: 85%;
+      }
     }
 
     &__description{
       margin: 1.5rem 0 2.5rem 0;
       max-width: 22.65rem;
       opacity: .7;
+
+      @include laptop{
+        margin: 1rem 0 1.5rem 0;
+        max-width: 18rem;
+      }
+
+      @include mobile{
+        margin: .5rem 0 1rem 0;
+        max-width: 100%;
+      }
     }
 
     &__list{
@@ -317,6 +436,7 @@
 
     &__item{
       grid-column: span 3;
+      position: relative;
       min-height: 14.5rem;
       background-color: #F5F5F7;
       border-radius: 10px;
@@ -324,6 +444,25 @@
       display: flex;
       flex-direction: column;
       gap: 1.5rem 0;
+      overflow: hidden;
+
+      @include laptop{
+        min-height: 10rem;
+        gap: .5rem 0;
+      }
+
+      @include mobile{
+        grid-column: 1 / -1;
+        border-radius: 5px;
+        padding: .5rem;
+      }
+
+      &:last-child{
+
+        .products__item__image{
+          transform: scale(2.5);
+        }
+      }
 
       &__number{
         display: flex;
@@ -333,10 +472,52 @@
         height: 2.8rem;
         border-radius: 5px;
         border: 1px solid #20376D33;
+
+        @include laptop{
+          width: 2rem;
+          height: 2rem;
+        }
       }
 
       &__title{
         max-width: 15rem;
+        z-index: 3;
+
+        @include laptop{
+          max-width: 9rem;
+        }
+
+        @include tablet{
+          max-width: 12rem;
+        }
+
+        @include mobile{
+          max-width: 12.45rem;
+        }
+      }
+
+      &__image{
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        width: 5.9rem;
+        height: 5.85rem;
+        z-index: 1;
+
+        @include laptop{
+          width: 3.9rem;
+          height: 3.85rem;
+        }
+
+        @include mobile{
+          right: .5rem;
+          bottom: .5rem;
+        }
+
+        svg{
+          width: 100%;
+          height: 100%;
+        }
       }
     }
     .button-polygon{
@@ -353,6 +534,14 @@
     justify-content: space-between;
     overflow: hidden;
 
+    @include laptop{
+      min-height: 38.4rem;
+    }
+
+    @include tablet{
+      min-height: 42.8rem;
+    }
+
     &__paragraph{
       display: flex;
       align-items: center;
@@ -361,6 +550,11 @@
       svg{
         width: .7rem;
         height: .8rem;
+
+        @include laptop{
+          width: .5rem;
+          height: .55rem;
+        }
       }
 
       &__title{
@@ -369,6 +563,16 @@
     }
 
     &__list{
+
+      @include tablet{
+        margin-top: 3rem;
+        gap: 1rem .5rem;
+      }
+
+      @include mobile{
+        margin-top: 2.5rem;
+        gap: 2rem .5rem;
+      }
 
       &.active{
 
@@ -384,22 +588,47 @@
       position: relative;
       transition: 1s;
 
+      @include tablet{
+        top: 0 !important;
+        grid-column: span 3;
+      }
+
       &:nth-child(2){
         top: 4rem;
+
+        @include laptop{
+          top: 2.5rem;
+        }
       }
 
       &:nth-child(3){
         top: 8rem;
+
+        @include laptop{
+          top: 5rem;
+        }
       }
 
       &__number{
         color: $c-w;
         margin-bottom: 1rem;
+
+        @include mobile{
+          margin-bottom: .5rem;
+        }
       }
 
       &__description{
         color: $c-w;
         margin-bottom: 2.5rem;
+
+        @include laptop{
+          margin-bottom: 1rem;
+        }
+
+        @include mobile{
+          margin-bottom: .5rem;
+        }
       }
 
       &__image{
@@ -407,6 +636,20 @@
         height: 23rem;
         //border-left: 1px solid rgba(255, 255, 255, 0.2);
         //border-right: 1px solid rgba(255, 255, 255, 0.2);
+
+        @include laptop{
+          height: 16.35rem;
+        }
+
+        @include tablet{
+          height: 8.8rem;
+          object-fit: cover;
+          object-position: top;
+        }
+
+        @include mobile{
+          height: 8rem;
+        }
       }
     }
   }
@@ -421,21 +664,79 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+
+      @include laptop{
+        height: 10.3rem;
+      }
+
+      @include tablet{
+        margin-top: 2.5rem;
+        height: 15rem;
+        grid-row: 2 / 2;
+      }
+
+      @include mobile{
+        margin-top: 1.5rem;
+        height: 13.8rem;
+      }
     }
 
     &__information{
       grid-column: 5 / -1;
 
+      @include tablet{
+        grid-column: 1 / -1;
+      }
+
       &__description{
         margin: 1.5rem 0 2rem 0;
         max-width: 31rem;
         opacity: .7;
+
+        @include tablet{
+          margin: 1rem 0 1.5rem 0;
+          max-width: 25.7rem;
+        }
+
+        @include mobile{
+          margin: 1rem 0 1rem 0;
+          max-width: 100%;
+        }
       }
     }
 
     &__products{
       grid-column: 1 / -1;
       margin-top: 5rem;
+
+      @include laptop{
+        margin-top: 4rem;
+      }
+
+      @include tablet{
+        margin-top: 3rem;
+      }
+
+      @include mobile{
+        margin-top: 2.5rem;
+      }
+
+      &__title{
+        grid-column: 8 / -1;
+        margin-bottom: 2rem;
+
+        @include laptop{
+          margin-bottom: 1.5rem;
+        }
+
+        @include tablet{
+          grid-column: 1 / -1;
+        }
+
+        @include mobile{
+          margin-bottom: 1rem;
+        }
+      }
 
       &__image{
         position: sticky;
@@ -449,11 +750,19 @@
           grid-column: 1 / 7;
           width: 100%;
           height: 100%;
+
+          @include tablet{
+            display: none;
+          }
         }
       }
 
       &__content{
         grid-column: 7 / -1;
+
+        @include tablet{
+          grid-column: 1 / -1;
+        }
 
         &__item{
           display: grid;
@@ -467,6 +776,10 @@
             top: calc(-.5rem);
             //width: 5rem;
             height: calc(100% + 1rem);
+
+            @include tablet{
+              display: none;
+            }
 
             svg{
               width: 100%;
@@ -482,6 +795,17 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+
+            @include tablet{
+              grid-column: 1 / -1;
+              min-height: 11.75rem;
+            }
+
+            @include mobile{
+              border-radius: 5px;
+              padding: .5rem;
+              min-height: 9.35rem;
+            }
 
             &__inner{
 
@@ -501,6 +825,19 @@
               display: flex;
               align-items: center;
               justify-content: center;
+
+              @include laptop{
+                width: 2rem;
+                height: 2rem;
+              }
+
+              @include tablet{
+                margin-bottom: 1rem;
+              }
+
+              @include mobile{
+                margin-bottom: .5rem;
+              }
             }
 
             &__title{
@@ -516,6 +853,16 @@
               &:hover{
                 opacity: .4;
                 transition: .5s;
+              }
+            }
+
+            &__icon{
+              width: .7rem;
+              height: .8rem;
+
+              @include laptop{
+                width: .5rem;
+                height: .55rem;
               }
             }
           }
@@ -733,6 +1080,14 @@
   .delivery{
     padding-bottom: 10rem;
 
+    @include tablet{
+      padding-bottom: 0;
+    }
+
+    @include mobile{
+      padding-bottom: 0;
+    }
+
     &__title{
       max-width: 90%;
       margin-bottom: 2.5rem;
@@ -765,7 +1120,7 @@
       }
 
       @include tablet{
-        margin-top: -2rem;
+        margin-top: 0;
       }
 
       @include mobile{
@@ -785,6 +1140,7 @@
 
       @include tablet{
         height: 20.4rem;
+        display: none;
       }
 
       @include mobile{
@@ -800,8 +1156,10 @@
       grid-template-rows: min-content;
 
       @include tablet{
+        position: relative;
         gap: .5rem .5rem;
-        top: 14rem;
+        top: 0;
+        margin-top: 2rem;
       }
 
       @include mobile{
@@ -1187,9 +1545,12 @@
   }
 
   &__link{
-    grid-column: 5 / 9;
+    grid-column: 5 / -1;
     margin-top: 2rem;
     padding-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0 1rem;
 
     @include laptop{
       padding-bottom: 1.5rem;
@@ -1204,6 +1565,9 @@
     @include mobile{
       margin-top: 1rem;
       padding-bottom: .5rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: .5rem 0;
     }
   }
 }
@@ -1215,7 +1579,7 @@
   border-radius: 10px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-y: 50px;
+  background-position-y: 0;
   transition: .5s;
 
   @include laptop{

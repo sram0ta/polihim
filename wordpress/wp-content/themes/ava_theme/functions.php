@@ -45,16 +45,44 @@ function ava_theme_scripts() {
     wp_enqueue_script( 'index-js', get_stylesheet_directory_uri() . '/src/index.js');
 
     if (is_page('infocenter')){
-        wp_enqueue_script( 'ajax-infocenter-js', get_stylesheet_directory_uri() . '/src/js/ajax-infocenter.js');
+        wp_enqueue_script(
+            'ajax-infocenter-js',
+            get_stylesheet_directory_uri() . '/src/js/ajax-infocenter.js',
+            [],
+            null,
+            true
+        );
     }
 
 
     if (is_page('tare')){
-        wp_enqueue_script( 'ajax-tare-js', get_stylesheet_directory_uri() . '/src/js/ajax-tare.js');
+        wp_enqueue_script(
+            'ajax-tare-js',
+            get_stylesheet_directory_uri() . '/src/js/ajax-tare.js',
+            [],
+            null,
+            true
+        );
     }
 
-    if (is_page('lubricants')){
-        wp_enqueue_script( 'ajax-lubricants-js', get_stylesheet_directory_uri() . '/src/js/ajax-lubricants.js');
+    if (is_page('lubricants')) {
+        wp_enqueue_script(
+            'ajax-lubricants-js',
+            get_stylesheet_directory_uri() . '/src/js/ajax-lubricants.js',
+            [],
+            null,
+            true
+        );
+
+        wp_localize_script('ajax-lubricants-js', 'ajax_object', [
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'lang' => pll_current_language(),
+        ]);
+    }
+
+
+    if (is_page('about')){
+        wp_enqueue_script( 'ajax-about-js', get_stylesheet_directory_uri() . '/src/js/ajax-about.js');
     }
 
     wp_dequeue_style('wp-block-library');
@@ -76,13 +104,16 @@ function allow_json_upload($mimes) {
 }
 add_filter('upload_mimes', 'allow_json_upload');
 
-function add_file_types_to_uploads($file_types){
-    $new_filetypes = array();
-    $new_filetypes['json'] = 'application/json';
-    $file_types = array_merge($file_types, $new_filetypes );
-    return $file_types;
-}
-add_filter('upload_mimes', 'add_file_types_to_uploads');
+// Отключаем проверку типа файла по расширению и MIME
+add_filter('wp_check_filetype_and_ext', function($data, $file, $filename, $mimes) {
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+    if ($ext === 'json') {
+        $data['ext'] = 'json';
+        $data['type'] = 'application/json';
+    }
+    return $data;
+}, 10, 4);
+
 
 // Убирает p и br из contact form 7
 add_filter('wpcf7_autop_or_not', '__return_false');
@@ -170,6 +201,18 @@ function ava_polylang_strings()
     );
 
     pll_register_string(
+        'lubricants-filter-name-industry',
+        'Фильтрация по отрасли',
+        'Смазки',
+    );
+
+    pll_register_string(
+        'lubricants-filter-name-industry-mobile',
+        'По отрасли',
+        'Смазки',
+    );
+
+    pll_register_string(
         'lubricants-filter-name-filter',
         'Фильтрация',
         'Смазки',
@@ -200,6 +243,12 @@ function ava_polylang_strings()
     );
 
     pll_register_string(
+        'about-more',
+        'Показать ещё',
+        'О нас',
+    );
+
+    pll_register_string(
         'catalog-link',
         'Перейти в каталог продукции',
         'Продукция',
@@ -221,6 +270,18 @@ function ava_polylang_strings()
         'catalog-link-tare',
         'Перейти в каталог Тары',
         'Продукция',
+    );
+
+    pll_register_string(
+        'main-product-link',
+        'Перейти в каталог',
+        'Главная',
+    );
+
+    pll_register_string(
+        'main-product-link',
+        'Продукция',
+        'Главная',
     );
 
     pll_register_string(
@@ -246,8 +307,35 @@ function ava_polylang_strings()
         'Ничего не найдено по запросу:',
         'Поиск',
     );
+
+    pll_register_string(
+        'search-found',
+        'Поиск',
+        'Поиск',
+    );
+
+    pll_register_string(
+        'footer-privacy-policy',
+        'Политика конфиденциальности',
+        'Подвал',
+    );
+
+    pll_register_string(
+        'footer-ava-digital',
+        'Сайт сделан в AVA-DIGITAL',
+        'Подвал',
+    );
 }
 
 require get_template_directory() . '/ajax-infocenter.php';
 require get_template_directory() . '/ajax-tare.php';
 require get_template_directory() . '/ajax-lubricants.php';
+require get_template_directory() . '/ajax-about.php';
+
+function redirect_404_to_home() {
+    if ( is_404() && !is_admin() ) {
+        wp_redirect( home_url(), 301 ); // 301 — постоянный редирект
+        exit;
+    }
+}
+add_action( 'template_redirect', 'redirect_404_to_home' );

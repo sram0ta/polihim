@@ -28,7 +28,7 @@ get_header();
             <div class="hero__information">
                 <div class="hero__information__title h1"><?php the_field('hero__title'); ?></div>
                 <p class="hero__information__description p1"><?php the_field('hero_description'); ?></p>
-                <a href="/<?= pll_current_language(); ?>/products/#catalog" class="button-polygon">
+                <a href="/<?= pll_current_language(); ?>/products/" class="button-polygon">
                     <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                     <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                         <span class="button-polygon__icon__inner">
@@ -43,7 +43,11 @@ get_header();
                 </a>
             </div>
         </div>
-        <div class="container main-image" style="background-image: url('<?php the_field('hero_image'); ?>')"></div>
+        <div class="container main-image">
+            <video autoplay="" loop="" muted="" playsinline="playsinline" poster="<?php the_field('hero_image_preview'); ?>">
+                <source src="<?php the_field('hero_image'); ?>" type="video/mp4">
+            </video>
+        </div>
         <div class="container container-main__inner">
             <div class="customer-focus grid-12">
                 <div class="customer-focus__paragraph">
@@ -54,7 +58,7 @@ get_header();
                 <div class="customer-focus__information">
                     <div class="customer-focus__information__title h3"><?php the_field('customer_title'); ?></div>
                     <div class="customer-focus__information__description p1"><?php the_field('customer_description'); ?></div>
-                    <a href="/<?= pll_current_language(); ?>/products/#catalog" class="button-polygon">
+                    <a href="/<?= pll_current_language(); ?>/products/" class="button-polygon">
                         <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                         <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                             <span class="button-polygon__icon__inner">
@@ -118,7 +122,7 @@ get_header();
                                 $index++;
                                 $is_last = $index === $total;
                                 ?>
-                                <div class="swiper-slide advantages__gallery__item<?= $is_last ? ' last' : '' ?>">
+                                <div class="swiper-slide possibilities__gallery__item<?= $is_last ? ' last' : '' ?>">
                                     <div class="possibilities__gallery__item__inner">
                                         <img src="<?= get_sub_field('image')['url']; ?>" alt="<?= get_sub_field('image')['alt']; ?>" class="possibilities__gallery__item__image" loading="lazy">
                                         <h4 class="possibilities__gallery__item__title h4"><?php the_sub_field('title'); ?></h4>
@@ -206,14 +210,14 @@ get_header();
                                 <div class="products__item">
                                     <div class="products__item__number p2"><?= sprintf('%02d', $count); ?></div>
                                     <p class="products__item__title p1"><?php the_sub_field('title'); ?></p>
-                                    <div class="products__item__image"></div>
+                                    <div class="products__item__image" data-json="<?php the_sub_field('image'); ?>"></div>
                                 </div>
                             <?php
                             $count++;
                             endwhile;
                         ?>
                     </div>
-                    <a href="/<?= pll_current_language(); ?>/products/#catalog" class="button-polygon">
+                    <a href="/<?= pll_current_language(); ?>/products/" class="button-polygon">
                         <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                         <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                             <span class="button-polygon__icon__inner">
@@ -256,7 +260,7 @@ get_header();
                 <div class="wide-range__information">
                     <div class="wide-range__information__title h1"><?php the_field('wide-range_title'); ?></div>
                     <p class="wide-range__information__description p1"><?php the_field('wide-range_description'); ?></p>
-                    <a href="/<?= pll_current_language(); ?>/products/#catalog" class="button-polygon">
+                    <a href="/<?= pll_current_language(); ?>/products/" class="button-polygon">
                         <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                         <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                             <span class="button-polygon__icon__inner">
@@ -271,115 +275,46 @@ get_header();
                     </a>
                 </div>
                 <div class="wide-range__products grid-12">
+                    <div class="wide-range__products__title p1"><?php the_field('wide-range_sub_title'); ?></div>
                     <div class="wide-range__products__image__inner">
                         <img src="<?= get_field('wide-range_product')['url']; ?>" alt="<?= get_field('wide-range_product')['alt']; ?>" class="wide-range__products__image" loading="lazy">
                     </div>
                     <div class="wide-range__products__content">
-                        <div class="wide-range__products__content__item">
-                            <img src="/wp-content/uploads/2025/07/Group-4.svg" alt="image" class="wide-range__products__content__item__ruler">
-                            <div class="wide-range__products__content__item__information">
-                                <div class="wide-range__products__content__item__information__inner">
-                                    <div class="wide-range__products__content__item__information__number p2">01</div>
-                                    <h4 class="wide-range__products__content__item__information__title h4">Водные и водоэмульсионные смазки и СОЖ</h4>
-                                </div>
-                                <div class="wide-range__products__content__item__information__inner">
-                                    <a href="#" class="wide-range__products__content__item__information__link p1">Перейти в каталог</a>
-                                    <svg class="wide-range__products__content__item__information__icon" width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M4.61853 1.36084C5.48656 0.864826 5.92057 0.61682 6.38149 0.519704C6.78935 0.43377 7.21065 0.43377 7.61851 0.519704C8.07943 0.61682 8.51345 0.864826 9.38147 1.36084L11.5815 2.61798C12.4623 3.12133 12.9027 3.373 13.2232 3.72664C13.5067 4.03952 13.7209 4.40873 13.8519 4.81011C14 5.26376 14 5.77102 14 6.78555V9.21445C14 10.229 14 10.7362 13.8519 11.1899C13.7209 11.5913 13.5067 11.9605 13.2232 12.2734C12.9027 12.627 12.4623 12.8787 11.5815 13.382L9.38147 14.6392C8.51345 15.1352 8.07943 15.3832 7.61851 15.4803C7.21065 15.5662 6.78935 15.5662 6.38149 15.4803C5.92057 15.3832 5.48656 15.1352 4.61853 14.6392L2.41853 13.382C1.53768 12.8787 1.09725 12.627 0.776833 12.2734C0.493338 11.9605 0.27908 11.5913 0.148071 11.1899C0 10.7362 0 10.229 0 9.21445V6.78555C0 5.77102 0 5.26376 0.148071 4.81011C0.27908 4.40873 0.493338 4.03952 0.776833 3.72664C1.09725 3.373 1.53768 3.12133 2.41853 2.61798L4.61853 1.36084Z" fill="#20376D"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="wide-range__products__content__item">
-                            <img src="/wp-content/uploads/2025/07/Group-4.svg" alt="image" class="wide-range__products__content__item__ruler">
-                            <div class="wide-range__products__content__item__information">
-                                <div class="wide-range__products__content__item__information__inner">
-                                    <div class="wide-range__products__content__item__information__number p2">01</div>
-                                    <h4 class="wide-range__products__content__item__information__title h4">Водные и водоэмульсионные смазки и СОЖ</h4>
-                                </div>
-                                <div class="wide-range__products__content__item__information__inner">
-                                    <a href="#" class="wide-range__products__content__item__information__link p1">Перейти в каталог</a>
-                                    <svg class="wide-range__products__content__item__information__icon" width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M4.61853 1.36084C5.48656 0.864826 5.92057 0.61682 6.38149 0.519704C6.78935 0.43377 7.21065 0.43377 7.61851 0.519704C8.07943 0.61682 8.51345 0.864826 9.38147 1.36084L11.5815 2.61798C12.4623 3.12133 12.9027 3.373 13.2232 3.72664C13.5067 4.03952 13.7209 4.40873 13.8519 4.81011C14 5.26376 14 5.77102 14 6.78555V9.21445C14 10.229 14 10.7362 13.8519 11.1899C13.7209 11.5913 13.5067 11.9605 13.2232 12.2734C12.9027 12.627 12.4623 12.8787 11.5815 13.382L9.38147 14.6392C8.51345 15.1352 8.07943 15.3832 7.61851 15.4803C7.21065 15.5662 6.78935 15.5662 6.38149 15.4803C5.92057 15.3832 5.48656 15.1352 4.61853 14.6392L2.41853 13.382C1.53768 12.8787 1.09725 12.627 0.776833 12.2734C0.493338 11.9605 0.27908 11.5913 0.148071 11.1899C0 10.7362 0 10.229 0 9.21445V6.78555C0 5.77102 0 5.26376 0.148071 4.81011C0.27908 4.40873 0.493338 4.03952 0.776833 3.72664C1.09725 3.373 1.53768 3.12133 2.41853 2.61798L4.61853 1.36084Z" fill="#20376D"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="wide-range__products__content__item">
-                            <img src="/wp-content/uploads/2025/07/Group-4.svg" alt="image" class="wide-range__products__content__item__ruler">
-                            <div class="wide-range__products__content__item__information">
-                                <div class="wide-range__products__content__item__information__inner">
-                                    <div class="wide-range__products__content__item__information__number p2">01</div>
-                                    <h4 class="wide-range__products__content__item__information__title h4">Водные и водоэмульсионные смазки и СОЖ</h4>
-                                </div>
-                                <div class="wide-range__products__content__item__information__inner">
-                                    <a href="#" class="wide-range__products__content__item__information__link p1">Перейти в каталог</a>
-                                    <svg class="wide-range__products__content__item__information__icon" width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M4.61853 1.36084C5.48656 0.864826 5.92057 0.61682 6.38149 0.519704C6.78935 0.43377 7.21065 0.43377 7.61851 0.519704C8.07943 0.61682 8.51345 0.864826 9.38147 1.36084L11.5815 2.61798C12.4623 3.12133 12.9027 3.373 13.2232 3.72664C13.5067 4.03952 13.7209 4.40873 13.8519 4.81011C14 5.26376 14 5.77102 14 6.78555V9.21445C14 10.229 14 10.7362 13.8519 11.1899C13.7209 11.5913 13.5067 11.9605 13.2232 12.2734C12.9027 12.627 12.4623 12.8787 11.5815 13.382L9.38147 14.6392C8.51345 15.1352 8.07943 15.3832 7.61851 15.4803C7.21065 15.5662 6.78935 15.5662 6.38149 15.4803C5.92057 15.3832 5.48656 15.1352 4.61853 14.6392L2.41853 13.382C1.53768 12.8787 1.09725 12.627 0.776833 12.2734C0.493338 11.9605 0.27908 11.5913 0.148071 11.1899C0 10.7362 0 10.229 0 9.21445V6.78555C0 5.77102 0 5.26376 0.148071 4.81011C0.27908 4.40873 0.493338 4.03952 0.776833 3.72664C1.09725 3.373 1.53768 3.12133 2.41853 2.61798L4.61853 1.36084Z" fill="#20376D"/>
-                                    </svg>
+                        <?php
+                        $terms = get_terms([
+                            'taxonomy'   => 'compound',
+                            'hide_empty' => true,
+                        ]);
+
+                        $total = count($terms);
+
+                        foreach ($terms as $index => $term) {
+                            $is_last = ($index === $total - 1);
+                            $image_src = $is_last
+                                ? '/wp-content/uploads/2025/07/Group-6.svg'
+                                : '/wp-content/uploads/2025/07/Group-4.svg';
+                            ?>
+
+                            <div class="wide-range__products__content__item">
+                                <img src="<?= $image_src ?>" alt="image" class="wide-range__products__content__item__ruler">
+                                <div class="wide-range__products__content__item__information">
+                                    <div class="wide-range__products__content__item__information__inner">
+                                        <div class="wide-range__products__content__item__information__number p2"><?php printf('%02d', $index + 1); ?></div>
+                                        <h4 class="wide-range__products__content__item__information__title h4"><?= esc_html($term->name); ?></h4>
+                                    </div>
+                                    <div class="wide-range__products__content__item__information__inner">
+                                        <a href="/<?= pll_current_language(); ?>/products/lubricants/?compound=<?= $term->slug; ?>" class="wide-range__products__content__item__information__link p1">
+                                            <?= pll__('Перейти в каталог'); ?>
+                                        </a>
+                                        <svg class="wide-range__products__content__item__information__icon" width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4.61853 1.36084C5.48656 0.864826 5.92057 0.61682 6.38149 0.519704C6.78935 0.43377 7.21065 0.43377 7.61851 0.519704C8.07943 0.61682 8.51345 0.864826 9.38147 1.36084L11.5815 2.61798C12.4623 3.12133 12.9027 3.373 13.2232 3.72664C13.5067 4.03952 13.7209 4.40873 13.8519 4.81011C14 5.26376 14 5.77102 14 6.78555V9.21445C14 10.229 14 10.7362 13.8519 11.1899C13.7209 11.5913 13.5067 11.9605 13.2232 12.2734C12.9027 12.627 12.4623 12.8787 11.5815 13.382L9.38147 14.6392C8.51345 15.1352 8.07943 15.3832 7.61851 15.4803C7.21065 15.5662 6.78935 15.5662 6.38149 15.4803C5.92057 15.3832 5.48656 15.1352 4.61853 14.6392L2.41853 13.382C1.53768 12.8787 1.09725 12.627 0.776833 12.2734C0.493338 11.9605 0.27908 11.5913 0.148071 11.1899C0 10.7362 0 10.229 0 9.21445V6.78555C0 5.77102 0 5.26376 0.148071 4.81011C0.27908 4.40873 0.493338 4.03952 0.776833 3.72664C1.09725 3.373 1.53768 3.12133 2.41853 2.61798L4.61853 1.36084Z" fill="#20376D"/>
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="wide-range__products__content__item">
-                            <img src="/wp-content/uploads/2025/07/Group-4.svg" alt="image" class="wide-range__products__content__item__ruler">
-                            <div class="wide-range__products__content__item__information">
-                                <div class="wide-range__products__content__item__information__inner">
-                                    <div class="wide-range__products__content__item__information__number p2">01</div>
-                                    <h4 class="wide-range__products__content__item__information__title h4">Водные и водоэмульсионные смазки и СОЖ</h4>
-                                </div>
-                                <div class="wide-range__products__content__item__information__inner">
-                                    <a href="#" class="wide-range__products__content__item__information__link p1">Перейти в каталог</a>
-                                    <svg class="wide-range__products__content__item__information__icon" width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M4.61853 1.36084C5.48656 0.864826 5.92057 0.61682 6.38149 0.519704C6.78935 0.43377 7.21065 0.43377 7.61851 0.519704C8.07943 0.61682 8.51345 0.864826 9.38147 1.36084L11.5815 2.61798C12.4623 3.12133 12.9027 3.373 13.2232 3.72664C13.5067 4.03952 13.7209 4.40873 13.8519 4.81011C14 5.26376 14 5.77102 14 6.78555V9.21445C14 10.229 14 10.7362 13.8519 11.1899C13.7209 11.5913 13.5067 11.9605 13.2232 12.2734C12.9027 12.627 12.4623 12.8787 11.5815 13.382L9.38147 14.6392C8.51345 15.1352 8.07943 15.3832 7.61851 15.4803C7.21065 15.5662 6.78935 15.5662 6.38149 15.4803C5.92057 15.3832 5.48656 15.1352 4.61853 14.6392L2.41853 13.382C1.53768 12.8787 1.09725 12.627 0.776833 12.2734C0.493338 11.9605 0.27908 11.5913 0.148071 11.1899C0 10.7362 0 10.229 0 9.21445V6.78555C0 5.77102 0 5.26376 0.148071 4.81011C0.27908 4.40873 0.493338 4.03952 0.776833 3.72664C1.09725 3.373 1.53768 3.12133 2.41853 2.61798L4.61853 1.36084Z" fill="#20376D"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="wide-range__products__content__item">
-                            <img src="/wp-content/uploads/2025/07/Group-4.svg" alt="image" class="wide-range__products__content__item__ruler">
-                            <div class="wide-range__products__content__item__information">
-                                <div class="wide-range__products__content__item__information__inner">
-                                    <div class="wide-range__products__content__item__information__number p2">01</div>
-                                    <h4 class="wide-range__products__content__item__information__title h4">Водные и водоэмульсионные смазки и СОЖ</h4>
-                                </div>
-                                <div class="wide-range__products__content__item__information__inner">
-                                    <a href="#" class="wide-range__products__content__item__information__link p1">Перейти в каталог</a>
-                                    <svg class="wide-range__products__content__item__information__icon" width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M4.61853 1.36084C5.48656 0.864826 5.92057 0.61682 6.38149 0.519704C6.78935 0.43377 7.21065 0.43377 7.61851 0.519704C8.07943 0.61682 8.51345 0.864826 9.38147 1.36084L11.5815 2.61798C12.4623 3.12133 12.9027 3.373 13.2232 3.72664C13.5067 4.03952 13.7209 4.40873 13.8519 4.81011C14 5.26376 14 5.77102 14 6.78555V9.21445C14 10.229 14 10.7362 13.8519 11.1899C13.7209 11.5913 13.5067 11.9605 13.2232 12.2734C12.9027 12.627 12.4623 12.8787 11.5815 13.382L9.38147 14.6392C8.51345 15.1352 8.07943 15.3832 7.61851 15.4803C7.21065 15.5662 6.78935 15.5662 6.38149 15.4803C5.92057 15.3832 5.48656 15.1352 4.61853 14.6392L2.41853 13.382C1.53768 12.8787 1.09725 12.627 0.776833 12.2734C0.493338 11.9605 0.27908 11.5913 0.148071 11.1899C0 10.7362 0 10.229 0 9.21445V6.78555C0 5.77102 0 5.26376 0.148071 4.81011C0.27908 4.40873 0.493338 4.03952 0.776833 3.72664C1.09725 3.373 1.53768 3.12133 2.41853 2.61798L4.61853 1.36084Z" fill="#20376D"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="wide-range__products__content__item">
-                            <img src="/wp-content/uploads/2025/07/Group-4.svg" alt="image" class="wide-range__products__content__item__ruler">
-                            <div class="wide-range__products__content__item__information">
-                                <div class="wide-range__products__content__item__information__inner">
-                                    <div class="wide-range__products__content__item__information__number p2">01</div>
-                                    <h4 class="wide-range__products__content__item__information__title h4">Водные и водоэмульсионные смазки и СОЖ</h4>
-                                </div>
-                                <div class="wide-range__products__content__item__information__inner">
-                                    <a href="#" class="wide-range__products__content__item__information__link p1">Перейти в каталог</a>
-                                    <svg class="wide-range__products__content__item__information__icon" width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M4.61853 1.36084C5.48656 0.864826 5.92057 0.61682 6.38149 0.519704C6.78935 0.43377 7.21065 0.43377 7.61851 0.519704C8.07943 0.61682 8.51345 0.864826 9.38147 1.36084L11.5815 2.61798C12.4623 3.12133 12.9027 3.373 13.2232 3.72664C13.5067 4.03952 13.7209 4.40873 13.8519 4.81011C14 5.26376 14 5.77102 14 6.78555V9.21445C14 10.229 14 10.7362 13.8519 11.1899C13.7209 11.5913 13.5067 11.9605 13.2232 12.2734C12.9027 12.627 12.4623 12.8787 11.5815 13.382L9.38147 14.6392C8.51345 15.1352 8.07943 15.3832 7.61851 15.4803C7.21065 15.5662 6.78935 15.5662 6.38149 15.4803C5.92057 15.3832 5.48656 15.1352 4.61853 14.6392L2.41853 13.382C1.53768 12.8787 1.09725 12.627 0.776833 12.2734C0.493338 11.9605 0.27908 11.5913 0.148071 11.1899C0 10.7362 0 10.229 0 9.21445V6.78555C0 5.77102 0 5.26376 0.148071 4.81011C0.27908 4.40873 0.493338 4.03952 0.776833 3.72664C1.09725 3.373 1.53768 3.12133 2.41853 2.61798L4.61853 1.36084Z" fill="#20376D"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="wide-range__products__content__item">
-                            <img src="/wp-content/uploads/2025/07/Group-6.svg" alt="image" class="wide-range__products__content__item__ruler">
-                            <div class="wide-range__products__content__item__information">
-                                <div class="wide-range__products__content__item__information__inner">
-                                    <div class="wide-range__products__content__item__information__number p2">01</div>
-                                    <h4 class="wide-range__products__content__item__information__title h4">Водные и водоэмульсионные смазки и СОЖ</h4>
-                                </div>
-                                <div class="wide-range__products__content__item__information__inner">
-                                    <a href="#" class="wide-range__products__content__item__information__link p1">Перейти в каталог</a>
-                                    <svg class="wide-range__products__content__item__information__icon" width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M4.61853 1.36084C5.48656 0.864826 5.92057 0.61682 6.38149 0.519704C6.78935 0.43377 7.21065 0.43377 7.61851 0.519704C8.07943 0.61682 8.51345 0.864826 9.38147 1.36084L11.5815 2.61798C12.4623 3.12133 12.9027 3.373 13.2232 3.72664C13.5067 4.03952 13.7209 4.40873 13.8519 4.81011C14 5.26376 14 5.77102 14 6.78555V9.21445C14 10.229 14 10.7362 13.8519 11.1899C13.7209 11.5913 13.5067 11.9605 13.2232 12.2734C12.9027 12.627 12.4623 12.8787 11.5815 13.382L9.38147 14.6392C8.51345 15.1352 8.07943 15.3832 7.61851 15.4803C7.21065 15.5662 6.78935 15.5662 6.38149 15.4803C5.92057 15.3832 5.48656 15.1352 4.61853 14.6392L2.41853 13.382C1.53768 12.8787 1.09725 12.627 0.776833 12.2734C0.493338 11.9605 0.27908 11.5913 0.148071 11.1899C0 10.7362 0 10.229 0 9.21445V6.78555C0 5.77102 0 5.26376 0.148071 4.81011C0.27908 4.40873 0.493338 4.03952 0.776833 3.72664C1.09725 3.373 1.53768 3.12133 2.41853 2.61798L4.61853 1.36084Z" fill="#20376D"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
+                            <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -389,7 +324,7 @@ get_header();
                     <div class="quality__inner grid-12">
                         <div class="quality__information">
                             <div class="quality__description p1"><?php the_field('quality_description'); ?></div>
-                            <a href="/<?= pll_current_language(); ?>/products/#catalog" class="button-polygon">
+                            <a href="/<?= pll_current_language(); ?>/products/" class="button-polygon">
                                 <span class="button-polygon__title p1"><?= pll__('Перейти в каталог продукции'); ?></span>
                                 <span class="button-polygon__icon" style="background-image: url('/wp-content/uploads/2025/07/Polygon-1.svg')">
                                 <span class="button-polygon__icon__inner">
@@ -484,7 +419,7 @@ get_header();
                 <?php foreach ($posts as $post) :
                     setup_postdata($post); ?>
                     <a href="<?= get_the_permalink($post); ?>" class="info-center__item grid-12">
-                        <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title(); ?>" class="info-center__item__image" loading="lazy">
+                        <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>" class="info-center__item__image" loading="lazy">
                         <span class="info-center__item__date">
                             <span class="info-center__item__date__number h1"><?= get_the_date('d'); ?></span>
                             <span class="info-center__item__date__another p1"><?= get_the_date('F Y'); ?></span>
