@@ -387,39 +387,71 @@ get_header();
                     <div class="clients__wrapper">
                         <div class="clients__image__list">
                             <?php
-                            $my_posts = get_posts( array(
-                                'numberposts' => 5,
-                                'post_type'   => 'clients',
-                                'post_status'    => 'publish',
-                                'suppress_filters' => true,
-                            ) );
+                            $orderby_fix = function( $clauses ) {
+                                global $wpdb;
+                                if ( ! empty( $clauses['orderby'] ) ) {
+                                    $clauses['orderby'] = str_replace(
+                                        "{$wpdb->posts}.post_title",
+                                        "{$wpdb->posts}.post_title COLLATE utf8mb4_unicode_ci",
+                                        $clauses['orderby']
+                                    );
+                                }
+                                return $clauses;
+                            };
+                            add_filter( 'posts_clauses', $orderby_fix, 999 );
 
-                            foreach( $my_posts as $post ){
+                            $my_posts = get_posts( [
+                                'numberposts'      => 5,
+                                'post_type'        => 'clients',
+                                'post_status'      => 'publish',
+                                'orderby'          => 'title',
+                                'order'            => 'ASC',
+                                'suppress_filters' => false,
+                            ] );
+
+                            remove_filter( 'posts_clauses', $orderby_fix, 999 );
+
+                            foreach ( $my_posts as $post ) {
                                 setup_postdata( $post );
+
+                                $image = get_field( 'image', $post->ID );
+                                $img_url = is_array( $image ) && ! empty( $image['url'] ) ? esc_url( $image['url'] ) : '';
+                                $img_alt = is_array( $image ) && isset( $image['alt'] ) ? esc_attr( $image['alt'] ) : esc_attr( get_the_title( $post ) );
                                 ?>
-                                    <img src="<?= get_field('image')['url']; ?>" alt="<?= get_field('image')['alt']; ?>" class="clients__image" loading="lazy" data-client="<?php the_ID(); ?>">
+                                <img
+                                        src="<?= $img_url; ?>"
+                                        alt="<?= $img_alt; ?>"
+                                        class="clients__image"
+                                        loading="lazy"
+                                        data-client="<?php echo esc_attr( $post->ID ); ?>"
+                                >
                                 <?php
-                            } wp_reset_postdata();
+                            }
+                            wp_reset_postdata();
                             ?>
                         </div>
                     </div>
+
                     <div class="clients__item__list">
                         <?php
                         $counter = 1;
-                        foreach( $my_posts as $post ){
+                        foreach ( $my_posts as $post ) {
                             setup_postdata( $post );
                             ?>
-                            <div class="clients__item" data-client="<?php the_ID(); ?>">
-                                <div class="clients__item__number p2"><?= sprintf('%02d', $counter); ?></div>
+                            <div class="clients__item" data-client="<?php echo esc_attr( $post->ID ); ?>">
+                                <div class="clients__item__number p2"><?= sprintf( '%02d', $counter ); ?></div>
                                 <div class="clients__item__title h5"><?php the_title(); ?></div>
                             </div>
                             <?php
                             $counter++;
-                        } wp_reset_postdata();
+                        }
+                        wp_reset_postdata();
                         ?>
                     </div>
-                    <button class="clients__load-more p1"><?= pll__('Показать ещё'); ?></button>
+
+                    <button class="clients__load-more p1"><?= pll__( 'Показать ещё' ); ?></button>
                 </div>
+
             </div>
         </div>
         <?= get_template_part('template-part/section-industry') ?>

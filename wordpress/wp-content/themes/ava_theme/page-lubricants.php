@@ -94,36 +94,21 @@ get_header();
                         $terms = get_terms([
                             'taxonomy'   => 'purpose',
                             'hide_empty' => true,
+                            'parent'     => 0,
                         ]);
-
                         if (!empty($terms) && !is_wp_error($terms)) {
-                            foreach ($terms as $term) {
-                                ?>
-                                <button class="products-filter__button p2" data-type="<?= esc_attr($term->slug); ?>"><?= esc_html($term->name) ?></button>
-                                <?php
-                            }
-                        }
-                        ?>
+                            foreach ($terms as $term) { ?>
+                                <button
+                                        class="products-filter__button p2"
+                                        data-type="<?= esc_attr($term->slug); ?>"
+                                ><?= esc_html($term->name) ?></button>
+                            <?php }
+                        } ?>
                     </div>
                 </div>
-                <div class="products-filter__item" data-block="industry">
+                <div class="products-filter__item is-hidden" data-block="industry">
                     <div class="products-filter__title p1"><?= pll__('Фильтрация по отрасли'); ?></div>
-                    <div class="products-filter__inner">
-                        <?php
-                        $terms = get_terms([
-                            'taxonomy'   => 'industry',
-                            'hide_empty' => true,
-                        ]);
-
-                        if (!empty($terms) && !is_wp_error($terms)) {
-                            foreach ($terms as $term) {
-                                ?>
-                                <button class="products-filter__button p2" data-type="<?= esc_attr($term->slug); ?>"><?= esc_html($term->name) ?></button>
-                                <?php
-                            }
-                        }
-                        ?>
-                    </div>
+                    <div class="products-filter__inner"></div>
                 </div>
                 <button class="products-filter__clear p2" style="display: none;"><?= pll__('Сбросить всё'); ?></button>
             </div>
@@ -155,31 +140,11 @@ get_header();
 
                 if ($query->have_posts()) :
                     while ($query->have_posts()) : $query->the_post();
-                        $compound_terms = get_the_terms(get_the_ID(), 'compound');
-                        $purpose_terms  = get_the_terms(get_the_ID(), 'purpose');
                         ?>
                         <div class="lubricants__content__item">
                             <div class="lubricants__content__item__inner">
                                 <h5 class="lubricants__content__item__title h5"><?php the_title(); ?></h5>
                                 <p class="lubricants__content__item__description p1"><?php the_field('small_description'); ?></p>
-                                <div class="lubricants__content__item__tag-list">
-                                    <?php
-                                    if ($compound_terms) {
-                                        foreach ($compound_terms as $term) {
-                                            ?>
-                                            <div class="lubricants__content__item__tag p2"><?= esc_html($term->name); ?></div>
-                                            <?php
-                                        }
-                                    }
-                                    if ($purpose_terms) {
-                                        foreach ($purpose_terms as $term) {
-                                            ?>
-                                            <div class="lubricants__content__item__tag p2"><?= esc_html($term->name); ?></div>
-                                            <?php
-                                        }
-                                    }
-                                    ?>
-                                </div>
                             </div>
                             <?php if (have_rows('repeater_description') || get_field('pdf_file')): ?>
                                 <div class="lubricants__content__item__link-list">

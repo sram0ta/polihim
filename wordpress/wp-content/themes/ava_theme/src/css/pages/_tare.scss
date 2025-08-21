@@ -232,6 +232,10 @@
     &.active{
       display: flex;
     }
+
+    &.is-hidden{
+      display: none;
+    }
   }
 
   &__inner{

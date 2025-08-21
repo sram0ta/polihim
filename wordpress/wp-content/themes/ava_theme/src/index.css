@@ -3234,6 +3234,9 @@ h5, .h5 {
 .products-filter__item.active {
   display: flex;
 }
+.products-filter__item.is-hidden {
+  display: none;
+}
 .products-filter__inner {
   display: flex;
   align-items: center;
